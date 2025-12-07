@@ -1,0 +1,51 @@
+// 1. Top 5 routes by number of flights
+MATCH (f:Flight)-[:DEPARTS_FROM]->(o:Airport),
+      (f)-[:ARRIVES_AT]->(d:Airport)
+WITH o.station_code AS origin,
+     d.station_code AS destination,
+     count(f) AS flight_count
+RETURN origin, destination, flight_count
+ORDER BY flight_count DESC
+LIMIT 5;
+
+
+
+// 2. Top 10 flights with most passenger feedback (journeys)
+MATCH (p:Passenger)-[:TOOK]->(j:Journey)-[:ON]->(f:Flight)
+WITH f.flight_number AS flight_number,
+     f.fleet_type_description AS fleet_type_description,
+     count(DISTINCT j) AS feedback_count
+RETURN flight_number, fleet_type_description, feedback_count
+ORDER BY feedback_count DESC
+LIMIT 10;
+
+
+
+// 3. Multi-leg journeys: count and average food score per generation
+MATCH (p:Passenger)-[:TOOK]->(j:Journey)
+WHERE j.number_of_legs > 1
+WITH p.generation AS generation,
+     count(j) AS multi_leg_count,
+     avg(j.food_satisfaction_score) AS avg_food_satisfaction_score
+RETURN generation, multi_leg_count, avg_food_satisfaction_score
+ORDER BY multi_leg_count DESC;
+
+
+
+// 4. 10 flights with the shortest average arrival delay
+MATCH (j:Journey)-[:ON]->(f:Flight)
+WITH f.flight_number AS flight_number,
+     f.fleet_type_description AS fleet_type_description,
+     avg(j.arrival_delay_minutes) AS avg_arrival_delay_minutes
+RETURN flight_number, fleet_type_description, avg_arrival_delay_minutes
+ORDER BY avg_arrival_delay_minutes ASC
+LIMIT 10;
+
+
+
+// 5. Average actual flown miles by loyalty program level
+MATCH (p:Passenger)-[:TOOK]->(j:Journey)
+WITH p.loyalty_program_level AS loyalty_level,
+     avg(j.actual_flown_miles) AS avg_actual_flown_miles
+RETURN loyalty_level, avg_actual_flown_miles
+ORDER BY avg_actual_flown_miles DESC;

@@ -1,0 +1,63 @@
+MATCH (p:Passenger)-[:TOOK]->(j:Journey)
+WITH
+  p,
+  j.food_satisfaction_score AS food,
+  j.arrival_delay_minutes   AS delay,
+  j.number_of_legs          AS legs,
+  j.actual_flown_miles      AS miles
+
+// --- Delay score ---
+WITH
+  p, food, legs, miles,
+  // raw delay ratio, rounded to 1 decimal place
+  round(abs(delay) / 20.0, 1) AS delay_ratio
+WITH
+  p, food, legs, miles,
+  CASE
+    WHEN delay_ratio < 0 THEN 0
+    WHEN delay_ratio > 5 THEN 5
+    ELSE delay_ratio
+  END AS delay_clamped
+WITH
+  p, food, legs, miles,
+  5 - delay_clamped AS delay_score
+
+// --- Legs score ---
+WITH
+  p, food, delay_score, miles,
+  round(legs * 1.5, 1) AS legs_ratio
+WITH
+  p, food, delay_score, miles,
+  CASE
+    WHEN legs_ratio < 0 THEN 0
+    WHEN legs_ratio > 5 THEN 5
+    ELSE legs_ratio
+  END AS legs_clamped
+WITH
+  p, food, delay_score, miles,
+  5 - legs_clamped AS legs_score
+
+// --- Miles score ---
+WITH
+  p, food, delay_score, legs_score,
+  round(miles / 3000.0, 1) AS miles_ratio
+WITH
+  p, food, delay_score, legs_score,
+  CASE
+    WHEN miles_ratio < 0 THEN 0
+    WHEN miles_ratio > 5 THEN 5
+    ELSE miles_ratio
+  END AS miles_clamped
+WITH
+  p, food, delay_score, legs_score,
+  5 - miles_clamped AS miles_score
+
+// --- Final overall score ---
+WITH
+  p,
+  0.5  * food +
+  0.35 * delay_score +
+  0.10 * legs_score +
+  0.05 * miles_score AS overall_satisfaction_score
+WHERE overall_satisfaction_score > 3
+RETURN count(DISTINCT p) AS satisfied_passenger_count;
