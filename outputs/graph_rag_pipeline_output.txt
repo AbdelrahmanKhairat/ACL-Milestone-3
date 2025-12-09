@@ -1,0 +1,75 @@
+================================================================================
+TEST 1: Single Question with Default Model
+================================================================================
+
+================================================================================
+GRAPH-RAG PIPELINE: Which flights have the longest delays?
+================================================================================
+
+[Step 1.a] Classifying intent...
+  Intent: delay_analysis
+[Step 1.b] Extracting entities...
+  Entities: {'flight_no': None, 'departure_airport': None, 'arrival_airport': None, 'route': None, 'passenger_class': None, 'generation': None, 'fleet_type': None, 'date': None}
+
+[Step 2.a] Executing Cypher query...
+  Found 20 results from Cypher
+[Step 2.b] Performing semantic similarity search...
+Loading model: sentence-transformers/all-mpnet-base-v2...
+  Found 5 results from embeddings
+
+[Step 3.a] Combining results...
+  Combined 13 unique results
+[Step 3.b] Building prompt...
+[Step 3.c] Querying LLM (gemma)...
+  Error: Model google/gemma-2-2b-it is not supported for task text-generation and provider nebius. Supported task: conversational.
+
+--------------------------------------------------------------------------------
+FINAL ANSWER:
+--------------------------------------------------------------------------------
+Error: Model google/gemma-2-2b-it is not supported for task text-generation and provider nebius. Supported task: conversational.     
+
+
+================================================================================
+TEST 2: Compare All Models
+================================================================================
+
+================================================================================
+COMPARING ALL MODELS: Show me journeys with poor food quality
+================================================================================
+
+Querying all LLM models...
+Querying gemma...
+Querying llama...
+Querying qwen...
+
+================================================================================
+MODEL COMPARISON RESULTS
+================================================================================
+
+--------------------------------------------------------------------------------
+MODEL: gemma
+--------------------------------------------------------------------------------
+Response Time: 0.00s
+Success: False
+
+Error: Model google/gemma-2-2b-it is not supported for task text-generation and provider nebius. Supported task: conversational.     
+
+--------------------------------------------------------------------------------
+MODEL: llama
+--------------------------------------------------------------------------------
+Response Time: 0.14s
+Success: False
+
+Error: Model meta-llama/Llama-3.2-3B-Instruct is not supported for task text-generation and provider novita. Supported task: conversational.
+
+--------------------------------------------------------------------------------
+MODEL: qwen
+--------------------------------------------------------------------------------
+Response Time: 0.15s
+Success: False
+
+Error:
+
+================================================================================
+Pipeline demo completed!
+================================================================================

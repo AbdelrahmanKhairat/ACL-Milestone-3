@@ -1,0 +1,350 @@
+================================================================================
+SIMILARITY SEARCH DEMO - Step 1.c & 2.b
+================================================================================
+
+
+================================================================================
+QUERY: Flights with long delays and poor food quality
+================================================================================
+
+
+Comparing models for query: 'Flights with long delays and poor food quality'
+
+Searching with all-MiniLM-L6-v2...
+Loading model: sentence-transformers/all-MiniLM-L6-v2...
+Searching with all-mpnet-base-v2...
+Loading model: sentence-transformers/all-mpnet-base-v2...
+
+--- Results from all-MiniLM-L6-v2 (384 dim) ---
+Found 3 similar journeys for query: 'Flights with long delays and poor food quality'
+
+Result 1 (similarity: 0.831):
+  - Journey ID: F_76
+  - Class: Economy
+  - Food satisfaction: 2/5
+  - Arrival delay: 104 minutes
+  - Distance: 1400 miles
+  - Legs: 1
+
+Result 2 (similarity: 0.830):
+  - Journey ID: F_119
+  - Class: Economy
+  - Food satisfaction: 2/5
+  - Arrival delay: 107 minutes
+  - Distance: 719 miles
+  - Legs: 1
+
+Result 3 (similarity: 0.829):
+  - Journey ID: F_870
+  - Class: Economy
+  - Food satisfaction: 3/5
+  - Arrival delay: 107 minutes
+  - Distance: 938 miles
+  - Legs: 1
+
+--- Results from all-mpnet-base-v2 (768 dim) ---
+Found 3 similar journeys for query: 'Flights with long delays and poor food quality'
+
+Result 1 (similarity: 0.841):
+  - Journey ID: F_1503
+  - Class: Economy
+  - Food satisfaction: 1/5
+  - Arrival delay: 109 minutes
+  - Distance: 719 miles
+  - Legs: 3
+
+Result 2 (similarity: 0.840):
+  - Journey ID: F_692
+  - Class: Economy
+  - Food satisfaction: 1/5
+  - Arrival delay: 81 minutes
+  - Distance: 888 miles
+  - Legs: 3
+
+Result 3 (similarity: 0.839):
+  - Journey ID: F_2455
+  - Class: Economy
+  - Food satisfaction: 1/5
+  - Arrival delay: 104 minutes
+  - Distance: 7853 miles
+  - Legs: 3
+
+--------------------------------------------------------------------------------
+
+
+================================================================================
+QUERY: Short distance business class journeys
+================================================================================
+
+
+Comparing models for query: 'Short distance business class journeys'
+
+Searching with all-MiniLM-L6-v2...
+Searching with all-mpnet-base-v2...
+
+--- Results from all-MiniLM-L6-v2 (384 dim) ---
+Found 3 similar journeys for query: 'Short distance business class journeys'
+
+Result 1 (similarity: 0.826):
+  - Journey ID: F_1331
+  - Class: Economy
+  - Food satisfaction: 2/5
+  - Arrival delay: -12 minutes
+  - Distance: 337 miles
+  - Legs: 2
+
+Result 2 (similarity: 0.826):
+  - Journey ID: F_246
+  - Class: Economy
+  - Food satisfaction: 2/5
+  - Arrival delay: -7 minutes
+  - Distance: 337 miles
+  - Legs: 2
+
+Result 3 (similarity: 0.825):
+  - Journey ID: F_2958
+  - Class: Economy
+  - Food satisfaction: 2/5
+  - Arrival delay: 1 minutes
+  - Distance: 337 miles
+  - Legs: 2
+
+--- Results from all-mpnet-base-v2 (768 dim) ---
+Found 3 similar journeys for query: 'Short distance business class journeys'
+
+Result 1 (similarity: 0.800):
+  - Journey ID: F_1572
+  - Class: Economy
+  - Food satisfaction: 3/5
+  - Arrival delay: -15 minutes
+  - Distance: 550 miles
+  - Legs: 3
+
+Result 2 (similarity: 0.800):
+  - Journey ID: F_112
+  - Class: Economy
+  - Food satisfaction: 3/5
+  - Arrival delay: -5 minutes
+  - Distance: 1452 miles
+  - Legs: 3
+
+Result 3 (similarity: 0.798):
+  - Journey ID: F_1111
+  - Class: Economy
+  - Food satisfaction: 3/5
+  - Arrival delay: -14 minutes
+  - Distance: 1103 miles
+  - Legs: 3
+
+--------------------------------------------------------------------------------
+
+
+================================================================================
+QUERY: Comfortable flights with good service
+================================================================================
+
+
+Comparing models for query: 'Comfortable flights with good service'
+
+Searching with all-MiniLM-L6-v2...
+Searching with all-mpnet-base-v2...
+
+--- Results from all-MiniLM-L6-v2 (384 dim) ---
+Found 3 similar journeys for query: 'Comfortable flights with good service'
+
+Result 1 (similarity: 0.766):
+  - Journey ID: F_2904
+  - Class: Economy
+  - Food satisfaction: 5/5
+  - Arrival delay: -18 minutes
+  - Distance: 1545 miles
+  - Legs: 1
+
+Result 2 (similarity: 0.766):
+  - Journey ID: F_279
+  - Class: Economy
+  - Food satisfaction: 5/5
+  - Arrival delay: 16 minutes
+  - Distance: 4010 miles
+  - Legs: 1
+
+Result 3 (similarity: 0.765):
+  - Journey ID: F_1249
+  - Class: Economy
+  - Food satisfaction: 5/5
+  - Arrival delay: 19 minutes
+  - Distance: 1068 miles
+  - Legs: 1
+
+--- Results from all-mpnet-base-v2 (768 dim) ---
+Found 3 similar journeys for query: 'Comfortable flights with good service'
+
+Result 1 (similarity: 0.818):
+  - Journey ID: F_234
+  - Class: Economy
+  - Food satisfaction: 4/5
+  - Arrival delay: -12 minutes
+  - Distance: 800 miles
+  - Legs: 3
+
+Result 2 (similarity: 0.815):
+  - Journey ID: F_1124
+  - Class: Economy
+  - Food satisfaction: 4/5
+  - Arrival delay: -30 minutes
+  - Distance: 1400 miles
+  - Legs: 2
+
+Result 3 (similarity: 0.813):
+  - Journey ID: F_664
+  - Class: Economy
+  - Food satisfaction: 4/5
+  - Arrival delay: -11 minutes
+  - Distance: 552 miles
+  - Legs: 3
+
+--------------------------------------------------------------------------------
+
+
+================================================================================
+QUERY: Economy class with minimal delays
+================================================================================
+
+
+Comparing models for query: 'Economy class with minimal delays'
+
+Searching with all-MiniLM-L6-v2...
+Searching with all-mpnet-base-v2...
+
+--- Results from all-MiniLM-L6-v2 (384 dim) ---
+Found 3 similar journeys for query: 'Economy class with minimal delays'
+
+Result 1 (similarity: 0.831):
+  - Journey ID: F_951
+  - Class: Economy
+  - Food satisfaction: 2/5
+  - Arrival delay: 90 minutes
+  - Distance: 1008 miles
+  - Legs: 2
+
+Result 2 (similarity: 0.828):
+  - Journey ID: F_2661
+  - Class: Economy
+  - Food satisfaction: 4/5
+  - Arrival delay: 117 minutes
+  - Distance: 391 miles
+  - Legs: 3
+
+Result 3 (similarity: 0.827):
+  - Journey ID: F_2160
+  - Class: Economy
+  - Food satisfaction: 2/5
+  - Arrival delay: 125 minutes
+  - Distance: 190 miles
+  - Legs: 2
+
+--- Results from all-mpnet-base-v2 (768 dim) ---
+Found 3 similar journeys for query: 'Economy class with minimal delays'
+
+Result 1 (similarity: 0.837):
+  - Journey ID: F_2651
+  - Class: Economy
+  - Food satisfaction: 4/5
+  - Arrival delay: 620 minutes
+  - Distance: 8440 miles
+  - Legs: 3
+
+Result 2 (similarity: 0.833):
+  - Journey ID: F_1418
+  - Class: Economy
+  - Food satisfaction: 4/5
+  - Arrival delay: 51 minutes
+  - Distance: 7815 miles
+  - Legs: 2
+
+Result 3 (similarity: 0.832):
+  - Journey ID: F_2668
+  - Class: Economy
+  - Food satisfaction: 3/5
+  - Arrival delay: 22 minutes
+  - Distance: 4010 miles
+  - Legs: 3
+
+--------------------------------------------------------------------------------
+
+
+================================================================================
+QUERY: Multi-leg journeys with satisfaction issues
+================================================================================
+
+
+Comparing models for query: 'Multi-leg journeys with satisfaction issues'
+
+Searching with all-MiniLM-L6-v2...
+Searching with all-mpnet-base-v2...
+
+--- Results from all-MiniLM-L6-v2 (384 dim) ---
+Found 3 similar journeys for query: 'Multi-leg journeys with satisfaction issues'
+
+Result 1 (similarity: 0.701):
+  - Journey ID: F_1863
+  - Class: Economy
+  - Food satisfaction: 2/5
+  - Arrival delay: 0 minutes
+  - Distance: 1846 miles
+  - Legs: 3
+
+Result 2 (similarity: 0.699):
+  - Journey ID: F_772
+  - Class: Economy
+  - Food satisfaction: 2/5
+  - Arrival delay: -13 minutes
+  - Distance: 1597 miles
+  - Legs: 3
+
+Result 3 (similarity: 0.696):
+  - Journey ID: F_1887
+  - Class: Economy
+  - Food satisfaction: 2/5
+  - Arrival delay: 9 minutes
+  - Distance: 804 miles
+  - Legs: 3
+
+--- Results from all-mpnet-base-v2 (768 dim) ---
+Found 3 similar journeys for query: 'Multi-leg journeys with satisfaction issues'
+
+Result 1 (similarity: 0.739):
+  - Journey ID: F_692
+  - Class: Economy
+  - Food satisfaction: 1/5
+  - Arrival delay: 81 minutes
+  - Distance: 888 miles
+  - Legs: 3
+
+Result 2 (similarity: 0.738):
+  - Journey ID: F_1503
+  - Class: Economy
+  - Food satisfaction: 1/5
+  - Arrival delay: 109 minutes
+  - Distance: 719 miles
+  - Legs: 3
+
+Result 3 (similarity: 0.735):
+  - Journey ID: F_2388
+  - Class: Economy
+  - Food satisfaction: 2/5
+  - Arrival delay: -19 minutes
+  - Distance: 1400 miles
+  - Legs: 3
+
+--------------------------------------------------------------------------------
+
+
+================================================================================
+✅ Similarity search demo completed!
+================================================================================
+
+You can now:
+1. Use these embeddings in your Graph-RAG pipeline
+2. Combine with Cypher query results (Step 2.a)
+3. Move to Step 3: LLM Layer

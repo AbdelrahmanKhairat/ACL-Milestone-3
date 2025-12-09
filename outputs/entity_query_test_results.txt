@@ -1,0 +1,475 @@
+
+================================================================================
+ENTITY EXTRACTION & QUERY INTEGRATION TEST
+================================================================================
+
+
+################################################################################
+# Category: Delay Questions
+################################################################################
+
+================================================================================
+QUESTION: Which flights have the longest delays?
+================================================================================
+
+[OK] Intent: delay_analysis
+
+[OK] Entities Extracted:
+
+[OK] Cypher Query Available: YES
+  Query doesn't require specific entities (uses ORDER BY/LIMIT)
+
+[ASSESSMENT]:
+  [OK] Working well!
+
+================================================================================
+QUESTION: Show me flights with delays from ORD
+================================================================================
+
+[OK] Intent: delay_analysis
+
+[OK] Entities Extracted:
+
+[OK] Cypher Query Available: YES
+  Query doesn't require specific entities (uses ORDER BY/LIMIT)
+
+[ASSESSMENT]:
+  [ISSUES FOUND]:
+    - Intent mismatch: Question about specific flights but intent is delay_analysis
+    - Entity extraction issue: Question mentions from/to but no airports extracted
+
+================================================================================
+QUESTION: What flights are late from Cairo to Dubai?
+================================================================================
+
+[OK] Intent: delay_analysis
+
+[OK] Entities Extracted:
+
+[OK] Cypher Query Available: YES
+  Query doesn't require specific entities (uses ORDER BY/LIMIT)
+
+[ASSESSMENT]:
+  [ISSUES FOUND]:
+    - Intent mismatch: Question about specific flights but intent is delay_analysis
+    - Entity extraction issue: Question mentions from/to but no airports extracted
+
+================================================================================
+QUESTION: Flights delayed more than 1 hour
+================================================================================
+
+[OK] Intent: delay_analysis
+
+[OK] Entities Extracted:
+
+[OK] Cypher Query Available: YES
+  Query doesn't require specific entities (uses ORDER BY/LIMIT)
+
+[ASSESSMENT]:
+  [OK] Working well!
+
+
+################################################################################
+# Category: Flight Search
+################################################################################
+
+================================================================================
+QUESTION: Show me flights from CAI to DXB
+================================================================================
+
+[OK] Intent: find_flights
+
+[OK] Entities Extracted:
+  - departure_airport: CAI
+  - arrival_airport: DXB
+  - route: CAI-DXB
+
+[OK] Cypher Query Available: YES
+  Query expects: airports
+  [OK] Required entities FOUND
+
+[ASSESSMENT]:
+  [OK] Working well!
+
+================================================================================
+QUESTION: Find flights from London to Paris
+================================================================================
+
+[OK] Intent: find_flights
+
+[OK] Entities Extracted:
+
+[OK] Cypher Query Available: YES
+  Query expects: airports
+  [WARNING] Query needs airports but none extracted!
+
+[ASSESSMENT]:
+  [ISSUES FOUND]:
+    - Entity extraction issue: Question mentions from/to but no airports extracted
+
+================================================================================
+QUESTION: What flights go from JFK to FRA?
+================================================================================
+
+[OK] Intent: find_flights
+
+[OK] Entities Extracted:
+  - departure_airport: JFK
+  - arrival_airport: FRA
+  - route: JFK-FRA
+
+[OK] Cypher Query Available: YES
+  Query expects: airports
+  [OK] Required entities FOUND
+
+[ASSESSMENT]:
+  [OK] Working well!
+
+================================================================================
+QUESTION: Flights between New York and Frankfurt
+================================================================================
+
+[OK] Intent: general_query
+
+[OK] Entities Extracted:
+
+[OK] Cypher Query Available: YES
+  Query doesn't require specific entities (uses ORDER BY/LIMIT)
+
+[ASSESSMENT]:
+  [OK] Working well!
+
+
+################################################################################
+# Category: Airport Questions
+################################################################################
+
+================================================================================
+QUESTION: Tell me about ORD airport
+================================================================================
+
+[OK] Intent: airport_info
+
+[OK] Entities Extracted:
+
+[OK] Cypher Query Available: YES
+  Query expects: station_code
+
+[ASSESSMENT]:
+  [OK] Working well!
+
+================================================================================
+QUESTION: Information on Cairo airport
+================================================================================
+
+[OK] Intent: airport_info
+
+[OK] Entities Extracted:
+
+[OK] Cypher Query Available: YES
+  Query expects: station_code
+
+[ASSESSMENT]:
+  [OK] Working well!
+
+================================================================================
+QUESTION: What do you know about JFK?
+================================================================================
+
+[OK] Intent: general_query
+
+[OK] Entities Extracted:
+
+[OK] Cypher Query Available: YES
+  Query doesn't require specific entities (uses ORDER BY/LIMIT)
+
+[ASSESSMENT]:
+  [OK] Working well!
+
+================================================================================
+QUESTION: Details on CAI airport
+================================================================================
+
+[OK] Intent: airport_info
+
+[OK] Entities Extracted:
+
+[OK] Cypher Query Available: YES
+  Query expects: station_code
+
+[ASSESSMENT]:
+  [OK] Working well!
+
+
+################################################################################
+# Category: Passenger Experience
+################################################################################
+
+================================================================================
+QUESTION: Which flights have poor passenger experience?
+================================================================================
+
+[OK] Intent: passenger_experience
+
+[OK] Entities Extracted:
+
+[OK] Cypher Query Available: YES
+  Query doesn't require specific entities (uses ORDER BY/LIMIT)
+
+[ASSESSMENT]:
+  [OK] Working well!
+
+================================================================================
+QUESTION: Show me flights with bad service
+================================================================================
+
+[OK] Intent: general_query
+
+[OK] Entities Extracted:
+
+[OK] Cypher Query Available: YES
+  Query doesn't require specific entities (uses ORDER BY/LIMIT)
+
+[ASSESSMENT]:
+  [ISSUES FOUND]:
+    - Intent mismatch: Question about experience but intent is general_query
+
+================================================================================
+QUESTION: Flights with low satisfaction scores
+================================================================================
+
+[OK] Intent: passenger_experience
+
+[OK] Entities Extracted:
+
+[OK] Cypher Query Available: YES
+  Query doesn't require specific entities (uses ORDER BY/LIMIT)
+
+[ASSESSMENT]:
+  [OK] Working well!
+
+================================================================================
+QUESTION: Which routes have unhappy passengers?
+================================================================================
+
+[OK] Intent: general_query
+
+[OK] Entities Extracted:
+
+[OK] Cypher Query Available: YES
+  Query doesn't require specific entities (uses ORDER BY/LIMIT)
+
+[ASSESSMENT]:
+  [OK] Working well!
+
+
+################################################################################
+# Category: Recommendations
+################################################################################
+
+================================================================================
+QUESTION: Recommend a good flight route
+================================================================================
+
+[OK] Intent: route_recommendation
+
+[OK] Entities Extracted:
+  - passenger_class: economy
+
+[OK] Cypher Query Available: YES
+  Query doesn't require specific entities (uses ORDER BY/LIMIT)
+
+[ASSESSMENT]:
+  [OK] Working well!
+
+================================================================================
+QUESTION: Best flights from Cairo?
+================================================================================
+
+[OK] Intent: find_flights
+
+[OK] Entities Extracted:
+
+[OK] Cypher Query Available: YES
+  Query expects: airports
+  [WARNING] Query needs airports but none extracted!
+
+[ASSESSMENT]:
+  [ISSUES FOUND]:
+    - Entity extraction issue: Question mentions from/to but no airports extracted
+
+================================================================================
+QUESTION: Fastest route to London
+================================================================================
+
+[OK] Intent: route_recommendation
+
+[OK] Entities Extracted:
+
+[OK] Cypher Query Available: YES
+  Query doesn't require specific entities (uses ORDER BY/LIMIT)
+
+[ASSESSMENT]:
+  [ISSUES FOUND]:
+    - Intent mismatch: Question about specific flights but intent is route_recommendation
+    - Entity extraction issue: Question mentions from/to but no airports extracted
+
+================================================================================
+QUESTION: Which flights should I take?
+================================================================================
+
+[OK] Intent: general_query
+
+[OK] Entities Extracted:
+
+[OK] Cypher Query Available: YES
+  Query doesn't require specific entities (uses ORDER BY/LIMIT)
+
+[ASSESSMENT]:
+  [OK] Working well!
+
+
+################################################################################
+# Category: Complex Questions
+################################################################################
+
+================================================================================
+QUESTION: Business class flights from ORD with delays
+================================================================================
+
+[OK] Intent: delay_analysis
+
+[OK] Entities Extracted:
+  - passenger_class: business
+
+[OK] Cypher Query Available: YES
+  Query doesn't require specific entities (uses ORDER BY/LIMIT)
+
+[ASSESSMENT]:
+  [ISSUES FOUND]:
+    - Intent mismatch: Question about specific flights but intent is delay_analysis
+    - Entity extraction issue: Question mentions from/to but no airports extracted
+
+================================================================================
+QUESTION: Economy passengers on CAI-DXB route with poor food
+================================================================================
+
+[OK] Intent: general_query
+
+[OK] Entities Extracted:
+  - departure_airport: CAI
+  - arrival_airport: DXB
+  - route: CAI-DXB
+  - passenger_class: economy
+
+[OK] Cypher Query Available: YES
+  Query doesn't require specific entities (uses ORDER BY/LIMIT)
+
+[ASSESSMENT]:
+  [OK] Working well!
+
+================================================================================
+QUESTION: Gen Z travelers experiencing delays
+================================================================================
+
+[OK] Intent: delay_analysis
+
+[OK] Entities Extracted:
+  - generation: gen z
+
+[OK] Cypher Query Available: YES
+  Query doesn't require specific entities (uses ORDER BY/LIMIT)
+
+[ASSESSMENT]:
+  [OK] Working well!
+
+================================================================================
+QUESTION: A320 flights with long delays
+================================================================================
+
+[OK] Intent: delay_analysis
+
+[OK] Entities Extracted:
+  - fleet_type: A320
+
+[OK] Cypher Query Available: YES
+  Query doesn't require specific entities (uses ORDER BY/LIMIT)
+
+[ASSESSMENT]:
+  [OK] Working well!
+
+
+################################################################################
+# Category: General Questions
+################################################################################
+
+================================================================================
+QUESTION: Tell me about flights
+================================================================================
+
+[OK] Intent: general_query
+
+[OK] Entities Extracted:
+
+[OK] Cypher Query Available: YES
+  Query doesn't require specific entities (uses ORDER BY/LIMIT)
+
+[ASSESSMENT]:
+  [OK] Working well!
+
+================================================================================
+QUESTION: What data do you have?
+================================================================================
+
+[OK] Intent: general_query
+
+[OK] Entities Extracted:
+
+[OK] Cypher Query Available: YES
+  Query doesn't require specific entities (uses ORDER BY/LIMIT)
+
+[ASSESSMENT]:
+  [OK] Working well!
+
+================================================================================
+QUESTION: Show me airline information
+================================================================================
+
+[OK] Intent: general_query
+
+[OK] Entities Extracted:
+
+[OK] Cypher Query Available: YES
+  Query doesn't require specific entities (uses ORDER BY/LIMIT)
+
+[ASSESSMENT]:
+  [OK] Working well!
+
+================================================================================
+QUESTION: Help me find a flight
+================================================================================
+
+[OK] Intent: general_query
+
+[OK] Entities Extracted:
+
+[OK] Cypher Query Available: YES
+  Query doesn't require specific entities (uses ORDER BY/LIMIT)
+
+[ASSESSMENT]:
+  [OK] Working well!
+
+
+================================================================================
+FINAL SUMMARY
+================================================================================
+
+Total questions tested: 28
+[OK] Working well: 21
+[WARNING] Needs improvement: 7
+
+Success Rate: 75.0%
+
+[WARNING] OVERALL: FAIR - System works but has some gaps
+
+================================================================================
