@@ -1,0 +1,2456 @@
+====================================================================================================
+GRAPH-RAG PIPELINE - DETAILED TEST RESULTS
+====================================================================================================
+
+Model: openai
+Date: 2025-12-09 14:50:07
+Total Questions: 15
+
+====================================================================================================
+
+
+====================================================================================================
+QUESTION 1/15: Which flights have the longest delays?
+====================================================================================================
+
+[STEP 1] PREPROCESSING
+----------------------------------------------------------------------------------------------------
+Intent: delay_analysis
+Entities Extracted:
+  (No entities extracted)
+
+[STEP 2] GRAPH RETRIEVAL
+----------------------------------------------------------------------------------------------------
+Cypher Query Results: 20 journeys
+Embedding Search Results: 5 journeys
+Total Context Length: 4056 characters
+
+[STEP 3] PROMPT SENT TO LLM
+----------------------------------------------------------------------------------------------------
+Prompt Length: 4056 characters
+Model: openai
+
+FULL PROMPT:
+================================================================================
+PERSONA:
+================================================================================
+You are an airline company insights assistant. Your role is to analyze
+flight performance data and passenger satisfaction metrics to help the airline
+improve service quality. You provide factual, data-driven insights based on
+actual flight records and passenger feedback.
+
+================================================================================
+CONTEXT (Knowledge Graph Data):
+================================================================================
+KNOWLEDGE GRAPH DATA (Intent: delay_analysis):
+================================================================================
+
+1. EXACT MATCHES from database query (10 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_2605
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 2:
+  Journey ID: F_2651
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 3:
+  Journey ID: F_873
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 4:
+  Journey ID: F_1154
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 5:
+  Journey ID: F_984
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+2. SEMANTIC MATCHES from AI similarity search (5 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_2651
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: 620 minutes
+  Distance: 8440 miles
+  Number of Legs: 3
+  Similarity Score: 0.767
+
+Result 2:
+  Journey ID: F_873
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: 463 minutes
+  Distance: 5904 miles
+  Number of Legs: 2
+  Similarity Score: 0.761
+
+Result 3:
+  Journey ID: F_2928
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: 62 minutes
+  Distance: 4505 miles
+  Number of Legs: 2
+  Similarity Score: 0.761
+
+Result 4:
+  Journey ID: F_693
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: 115 minutes
+  Distance: 717 miles
+  Number of Legs: 2
+  Similarity Score: 0.760
+
+Result 5:
+  Journey ID: F_2455
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: 104 minutes
+  Distance: 7853 miles
+  Number of Legs: 3
+  Similarity Score: 0.760
+
+3. SUMMARY:
+--------------------------------------------------------------------------------
+Total unique journeys found: 13
+From exact database queries: 10
+From semantic similarity: 5
+Average arrival delay: 93.7 minutes
+Average food satisfaction: 3.3/5
+================================================================================
+
+================================================================================
+TASK:
+================================================================================
+Answer the following question based ONLY on the CONTEXT provided above.
+
+IMPORTANT INSTRUCTIONS:
+1. Use ONLY the information provided in the CONTEXT section
+2. If the CONTEXT doesn't contain enough information, say: 'I don't have sufficient data to answer this question'
+3. Provide specific examples from the data (journey IDs, metrics, numbers)
+4. Be concise and factual - avoid speculation
+5. Do NOT make up or hallucinate any flight numbers, delays, or statistics
+6. If you see conflicting data, mention both sources
+
+--------------------------------------------------------------------------------
+USER QUESTION:
+Which flights have the longest delays?
+--------------------------------------------------------------------------------
+
+YOUR ANSWER:
+(Provide a clear, factual answer based on the CONTEXT above)
+
+
+[STEP 4] LLM RESPONSE
+----------------------------------------------------------------------------------------------------
+Response Time: 1.71 seconds
+Response Length: 767 characters
+Success: True
+
+FULL RESPONSE:
+**Flights with the longest reported arrival delays (from the semantic‑match data):**
+
+| Journey ID | Arrival Delay (minutes) | Passenger Class | Food Satisfaction |
+|------------|------------------------|-----------------|-------------------|
+| **F_2651** | **620** min | Economy | 4 / 5 |
+| **F_873**  | **463** min | Economy | 4 / 5 |
+| **F_2928** | 62 min  | Economy | 5 / 5 |
+| **F_693**  | 115 min | Economy | 4 / 5 |
+| **F_2455** | 104 min | Economy | 1 / 5 |
+
+The two longest delays are:
+
+1. **Journey F_2651** – 620 minutes (over 10 hours) delayed.  
+2. **Journey F_873** – 463 minutes (about 7 ¾ hours) delayed.
+
+All other listed journeys have shorter delays. The exact‑match records contain “N/A” for arrival delay, so they do not contribute to the ranking.
+
+
+====================================================================================================
+QUESTION 2/15: Show me flights with delays from ORD
+====================================================================================================
+
+[STEP 1] PREPROCESSING
+----------------------------------------------------------------------------------------------------
+Intent: delay_analysis
+Entities Extracted:
+  (No entities extracted)
+
+[STEP 2] GRAPH RETRIEVAL
+----------------------------------------------------------------------------------------------------
+Cypher Query Results: 20 journeys
+Embedding Search Results: 5 journeys
+Total Context Length: 4050 characters
+
+[STEP 3] PROMPT SENT TO LLM
+----------------------------------------------------------------------------------------------------
+Prompt Length: 4050 characters
+Model: openai
+
+FULL PROMPT:
+================================================================================
+PERSONA:
+================================================================================
+You are an airline company insights assistant. Your role is to analyze
+flight performance data and passenger satisfaction metrics to help the airline
+improve service quality. You provide factual, data-driven insights based on
+actual flight records and passenger feedback.
+
+================================================================================
+CONTEXT (Knowledge Graph Data):
+================================================================================
+KNOWLEDGE GRAPH DATA (Intent: delay_analysis):
+================================================================================
+
+1. EXACT MATCHES from database query (10 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_2605
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 2:
+  Journey ID: F_2651
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 3:
+  Journey ID: F_873
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 4:
+  Journey ID: F_1154
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 5:
+  Journey ID: F_984
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+2. SEMANTIC MATCHES from AI similarity search (5 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_693
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: 115 minutes
+  Distance: 717 miles
+  Number of Legs: 2
+  Similarity Score: 0.721
+
+Result 2:
+  Journey ID: F_1549
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: 74 minutes
+  Distance: 1452 miles
+  Number of Legs: 2
+  Similarity Score: 0.719
+
+Result 3:
+  Journey ID: F_1592
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: 70 minutes
+  Distance: 606 miles
+  Number of Legs: 2
+  Similarity Score: 0.719
+
+Result 4:
+  Journey ID: F_1930
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: 96 minutes
+  Distance: 901 miles
+  Number of Legs: 2
+  Similarity Score: 0.718
+
+Result 5:
+  Journey ID: F_260
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: 145 minutes
+  Distance: 689 miles
+  Number of Legs: 1
+  Similarity Score: 0.718
+
+3. SUMMARY:
+--------------------------------------------------------------------------------
+Total unique journeys found: 15
+From exact database queries: 10
+From semantic similarity: 5
+Average arrival delay: 100.0 minutes
+Average food satisfaction: 4.4/5
+================================================================================
+
+================================================================================
+TASK:
+================================================================================
+Answer the following question based ONLY on the CONTEXT provided above.
+
+IMPORTANT INSTRUCTIONS:
+1. Use ONLY the information provided in the CONTEXT section
+2. If the CONTEXT doesn't contain enough information, say: 'I don't have sufficient data to answer this question'
+3. Provide specific examples from the data (journey IDs, metrics, numbers)
+4. Be concise and factual - avoid speculation
+5. Do NOT make up or hallucinate any flight numbers, delays, or statistics
+6. If you see conflicting data, mention both sources
+
+--------------------------------------------------------------------------------
+USER QUESTION:
+Show me flights with delays from ORD
+--------------------------------------------------------------------------------
+
+YOUR ANSWER:
+(Provide a clear, factual answer based on the CONTEXT above)
+
+
+[STEP 4] LLM RESPONSE
+----------------------------------------------------------------------------------------------------
+Response Time: 0.78 seconds
+Response Length: 53 characters
+Success: True
+
+FULL RESPONSE:
+I don't have sufficient data to answer this question.
+
+
+====================================================================================================
+QUESTION 3/15: Flights delayed more than 1 hour
+====================================================================================================
+
+[STEP 1] PREPROCESSING
+----------------------------------------------------------------------------------------------------
+Intent: delay_analysis
+Entities Extracted:
+  (No entities extracted)
+
+[STEP 2] GRAPH RETRIEVAL
+----------------------------------------------------------------------------------------------------
+Cypher Query Results: 20 journeys
+Embedding Search Results: 5 journeys
+Total Context Length: 4047 characters
+
+[STEP 3] PROMPT SENT TO LLM
+----------------------------------------------------------------------------------------------------
+Prompt Length: 4047 characters
+Model: openai
+
+FULL PROMPT:
+================================================================================
+PERSONA:
+================================================================================
+You are an airline company insights assistant. Your role is to analyze
+flight performance data and passenger satisfaction metrics to help the airline
+improve service quality. You provide factual, data-driven insights based on
+actual flight records and passenger feedback.
+
+================================================================================
+CONTEXT (Knowledge Graph Data):
+================================================================================
+KNOWLEDGE GRAPH DATA (Intent: delay_analysis):
+================================================================================
+
+1. EXACT MATCHES from database query (10 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_2605
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 2:
+  Journey ID: F_2651
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 3:
+  Journey ID: F_873
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 4:
+  Journey ID: F_1154
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 5:
+  Journey ID: F_984
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+2. SEMANTIC MATCHES from AI similarity search (5 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_693
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: 115 minutes
+  Distance: 717 miles
+  Number of Legs: 2
+  Similarity Score: 0.740
+
+Result 2:
+  Journey ID: F_1503
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: 109 minutes
+  Distance: 719 miles
+  Number of Legs: 3
+  Similarity Score: 0.740
+
+Result 3:
+  Journey ID: F_1930
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: 96 minutes
+  Distance: 901 miles
+  Number of Legs: 2
+  Similarity Score: 0.738
+
+Result 4:
+  Journey ID: F_487
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: 196 minutes
+  Distance: 1024 miles
+  Number of Legs: 1
+  Similarity Score: 0.738
+
+Result 5:
+  Journey ID: F_1592
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: 70 minutes
+  Distance: 606 miles
+  Number of Legs: 2
+  Similarity Score: 0.737
+
+3. SUMMARY:
+--------------------------------------------------------------------------------
+Total unique journeys found: 15
+From exact database queries: 10
+From semantic similarity: 5
+Average arrival delay: 117.2 minutes
+Average food satisfaction: 4.0/5
+================================================================================
+
+================================================================================
+TASK:
+================================================================================
+Answer the following question based ONLY on the CONTEXT provided above.
+
+IMPORTANT INSTRUCTIONS:
+1. Use ONLY the information provided in the CONTEXT section
+2. If the CONTEXT doesn't contain enough information, say: 'I don't have sufficient data to answer this question'
+3. Provide specific examples from the data (journey IDs, metrics, numbers)
+4. Be concise and factual - avoid speculation
+5. Do NOT make up or hallucinate any flight numbers, delays, or statistics
+6. If you see conflicting data, mention both sources
+
+--------------------------------------------------------------------------------
+USER QUESTION:
+Flights delayed more than 1 hour
+--------------------------------------------------------------------------------
+
+YOUR ANSWER:
+(Provide a clear, factual answer based on the CONTEXT above)
+
+
+[STEP 4] LLM RESPONSE
+----------------------------------------------------------------------------------------------------
+Response Time: 4.38 seconds
+Response Length: 653 characters
+Success: True
+
+FULL RESPONSE:
+**Flights with arrival delays greater than 1 hour (60 minutes)**  
+
+| Journey ID | Passenger Class | Arrival Delay (minutes) |
+|------------|-----------------|--------------------------|
+| F_693      | Economy         | 115                      |
+| F_1503     | Economy         | 109                      |
+| F_1930     | Economy         | 96                       |
+| F_487      | Economy         | 196                      |
+| F_1592     | Economy         | 70                       |
+
+All five of these journeys come from the semantic‑match results; the exact‑match records report “N/A” for delay, so no additional flights meet the >1‑hour criterion.
+
+
+====================================================================================================
+QUESTION 4/15: Show me flights from CAI to DXB
+====================================================================================================
+
+[STEP 1] PREPROCESSING
+----------------------------------------------------------------------------------------------------
+Intent: find_flights
+Entities Extracted:
+  - departure_airport: CAI
+  - arrival_airport: DXB
+  - route: CAI-DXB
+
+[STEP 2] GRAPH RETRIEVAL
+----------------------------------------------------------------------------------------------------
+Cypher Query Results: 0 journeys
+Embedding Search Results: 5 journeys
+Total Context Length: 3158 characters
+
+[STEP 3] PROMPT SENT TO LLM
+----------------------------------------------------------------------------------------------------
+Prompt Length: 3158 characters
+Model: openai
+
+FULL PROMPT:
+================================================================================
+PERSONA:
+================================================================================
+You are an airline company insights assistant. Your role is to analyze
+flight performance data and passenger satisfaction metrics to help the airline
+improve service quality. You provide factual, data-driven insights based on
+actual flight records and passenger feedback.
+
+================================================================================
+CONTEXT (Knowledge Graph Data):
+================================================================================
+KNOWLEDGE GRAPH DATA (Intent: find_flights):
+================================================================================
+
+1. EXACT MATCHES: No exact matches found.
+
+2. SEMANTIC MATCHES from AI similarity search (5 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_2699
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: -5 minutes
+  Distance: 1436 miles
+  Number of Legs: 2
+  Similarity Score: 0.720
+
+Result 2:
+  Journey ID: F_395
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: -11 minutes
+  Distance: 1452 miles
+  Number of Legs: 2
+  Similarity Score: 0.720
+
+Result 3:
+  Journey ID: F_700
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: -6 minutes
+  Distance: 717 miles
+  Number of Legs: 2
+  Similarity Score: 0.720
+
+Result 4:
+  Journey ID: F_483
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: 20 minutes
+  Distance: 1434 miles
+  Number of Legs: 1
+  Similarity Score: 0.720
+
+Result 5:
+  Journey ID: F_1146
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: -14 minutes
+  Distance: 967 miles
+  Number of Legs: 2
+  Similarity Score: 0.720
+
+3. SUMMARY:
+--------------------------------------------------------------------------------
+Total unique journeys found: 5
+From exact database queries: 0
+From semantic similarity: 5
+Average arrival delay: -3.2 minutes
+Average food satisfaction: 4.8/5
+================================================================================
+
+================================================================================
+TASK:
+================================================================================
+Answer the following question based ONLY on the CONTEXT provided above.
+
+IMPORTANT INSTRUCTIONS:
+1. Use ONLY the information provided in the CONTEXT section
+2. If the CONTEXT doesn't contain enough information, say: 'I don't have sufficient data to answer this question'
+3. Provide specific examples from the data (journey IDs, metrics, numbers)
+4. Be concise and factual - avoid speculation
+5. Do NOT make up or hallucinate any flight numbers, delays, or statistics
+6. If you see conflicting data, mention both sources
+
+--------------------------------------------------------------------------------
+USER QUESTION:
+Show me flights from CAI to DXB
+--------------------------------------------------------------------------------
+
+YOUR ANSWER:
+(Provide a clear, factual answer based on the CONTEXT above)
+
+
+[STEP 4] LLM RESPONSE
+----------------------------------------------------------------------------------------------------
+Response Time: 0.84 seconds
+Response Length: 53 characters
+Success: True
+
+FULL RESPONSE:
+I don't have sufficient data to answer this question.
+
+
+====================================================================================================
+QUESTION 5/15: What flights go from JFK to FRA?
+====================================================================================================
+
+[STEP 1] PREPROCESSING
+----------------------------------------------------------------------------------------------------
+Intent: find_flights
+Entities Extracted:
+  - departure_airport: JFK
+  - arrival_airport: FRA
+  - route: JFK-FRA
+
+[STEP 2] GRAPH RETRIEVAL
+----------------------------------------------------------------------------------------------------
+Cypher Query Results: 0 journeys
+Embedding Search Results: 5 journeys
+Total Context Length: 3158 characters
+
+[STEP 3] PROMPT SENT TO LLM
+----------------------------------------------------------------------------------------------------
+Prompt Length: 3158 characters
+Model: openai
+
+FULL PROMPT:
+================================================================================
+PERSONA:
+================================================================================
+You are an airline company insights assistant. Your role is to analyze
+flight performance data and passenger satisfaction metrics to help the airline
+improve service quality. You provide factual, data-driven insights based on
+actual flight records and passenger feedback.
+
+================================================================================
+CONTEXT (Knowledge Graph Data):
+================================================================================
+KNOWLEDGE GRAPH DATA (Intent: find_flights):
+================================================================================
+
+1. EXACT MATCHES: No exact matches found.
+
+2. SEMANTIC MATCHES from AI similarity search (5 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_2273
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: 26 minutes
+  Distance: 349 miles
+  Number of Legs: 2
+  Similarity Score: 0.730
+
+Result 2:
+  Journey ID: F_2625
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: 18 minutes
+  Distance: 437 miles
+  Number of Legs: 2
+  Similarity Score: 0.728
+
+Result 3:
+  Journey ID: F_1955
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: 16 minutes
+  Distance: 109 miles
+  Number of Legs: 2
+  Similarity Score: 0.728
+
+Result 4:
+  Journey ID: F_2942
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: 19 minutes
+  Distance: 455 miles
+  Number of Legs: 2
+  Similarity Score: 0.725
+
+Result 5:
+  Journey ID: F_1606
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: 18 minutes
+  Distance: 1068 miles
+  Number of Legs: 2
+  Similarity Score: 0.725
+
+3. SUMMARY:
+--------------------------------------------------------------------------------
+Total unique journeys found: 5
+From exact database queries: 0
+From semantic similarity: 5
+Average arrival delay: 19.4 minutes
+Average food satisfaction: 4.8/5
+================================================================================
+
+================================================================================
+TASK:
+================================================================================
+Answer the following question based ONLY on the CONTEXT provided above.
+
+IMPORTANT INSTRUCTIONS:
+1. Use ONLY the information provided in the CONTEXT section
+2. If the CONTEXT doesn't contain enough information, say: 'I don't have sufficient data to answer this question'
+3. Provide specific examples from the data (journey IDs, metrics, numbers)
+4. Be concise and factual - avoid speculation
+5. Do NOT make up or hallucinate any flight numbers, delays, or statistics
+6. If you see conflicting data, mention both sources
+
+--------------------------------------------------------------------------------
+USER QUESTION:
+What flights go from JFK to FRA?
+--------------------------------------------------------------------------------
+
+YOUR ANSWER:
+(Provide a clear, factual answer based on the CONTEXT above)
+
+
+[STEP 4] LLM RESPONSE
+----------------------------------------------------------------------------------------------------
+Response Time: 0.77 seconds
+Response Length: 53 characters
+Success: True
+
+FULL RESPONSE:
+I don't have sufficient data to answer this question.
+
+
+====================================================================================================
+QUESTION 6/15: Find economy class flights
+====================================================================================================
+
+[STEP 1] PREPROCESSING
+----------------------------------------------------------------------------------------------------
+Intent: general_query
+Entities Extracted:
+  - passenger_class: economy
+
+[STEP 2] GRAPH RETRIEVAL
+----------------------------------------------------------------------------------------------------
+Cypher Query Results: 25 journeys
+Embedding Search Results: 5 journeys
+Total Context Length: 3940 characters
+
+[STEP 3] PROMPT SENT TO LLM
+----------------------------------------------------------------------------------------------------
+Prompt Length: 3940 characters
+Model: openai
+
+FULL PROMPT:
+================================================================================
+PERSONA:
+================================================================================
+You are an airline company insights assistant. Your role is to analyze
+flight performance data and passenger satisfaction metrics to help the airline
+improve service quality. You provide factual, data-driven insights based on
+actual flight records and passenger feedback.
+
+================================================================================
+CONTEXT (Knowledge Graph Data):
+================================================================================
+KNOWLEDGE GRAPH DATA (Intent: general_query):
+================================================================================
+
+1. EXACT MATCHES from database query (10 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 2:
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 3:
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 4:
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 5:
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+2. SEMANTIC MATCHES from AI similarity search (5 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_2024
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: -25 minutes
+  Distance: 550 miles
+  Number of Legs: 3
+  Similarity Score: 0.818
+
+Result 2:
+  Journey ID: F_364
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: -50 minutes
+  Distance: 2565 miles
+  Number of Legs: 2
+  Similarity Score: 0.818
+
+Result 3:
+  Journey ID: F_1413
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: -60 minutes
+  Distance: 4007 miles
+  Number of Legs: 1
+  Similarity Score: 0.817
+
+Result 4:
+  Journey ID: F_91
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: -50 minutes
+  Distance: 2565 miles
+  Number of Legs: 1
+  Similarity Score: 0.816
+
+Result 5:
+  Journey ID: F_1250
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: -14 minutes
+  Distance: 2500 miles
+  Number of Legs: 1
+  Similarity Score: 0.813
+
+3. SUMMARY:
+--------------------------------------------------------------------------------
+Total unique journeys found: 5
+From exact database queries: 10
+From semantic similarity: 5
+Average arrival delay: -39.8 minutes
+Average food satisfaction: 3.4/5
+================================================================================
+
+================================================================================
+TASK:
+================================================================================
+Answer the following question based ONLY on the CONTEXT provided above.
+
+IMPORTANT INSTRUCTIONS:
+1. Use ONLY the information provided in the CONTEXT section
+2. If the CONTEXT doesn't contain enough information, say: 'I don't have sufficient data to answer this question'
+3. Provide specific examples from the data (journey IDs, metrics, numbers)
+4. Be concise and factual - avoid speculation
+5. Do NOT make up or hallucinate any flight numbers, delays, or statistics
+6. If you see conflicting data, mention both sources
+
+--------------------------------------------------------------------------------
+USER QUESTION:
+Find economy class flights
+--------------------------------------------------------------------------------
+
+YOUR ANSWER:
+(Provide a clear, factual answer based on the CONTEXT above)
+
+
+[STEP 4] LLM RESPONSE
+----------------------------------------------------------------------------------------------------
+Response Time: 4.68 seconds
+Response Length: 542 characters
+Success: True
+
+FULL RESPONSE:
+**Economy‑class flights found in the data**
+
+| Journey ID | Food Satisfaction | Arrival Delay | Distance | Number of Legs |
+|------------|-------------------|---------------|----------|----------------|
+| F_2024 | 4 / 5 | –25 minutes | 550 mi | 3 |
+| F_364  | 4 / 5 | –50 minutes | 2 565 mi | 2 |
+| F_1413 | 4 / 5 | –60 minutes | 4 007 mi | 1 |
+| F_91   | 4 / 5 | –50 minutes | 2 565 mi | 1 |
+| F_1250 | 1 / 5 | –14 minutes | 2 500 mi | 1 |
+
+These are the only flights in the provided context that are explicitly labeled as **Economy** class.
+
+
+====================================================================================================
+QUESTION 7/15: Tell me about ORD airport
+====================================================================================================
+
+[STEP 1] PREPROCESSING
+----------------------------------------------------------------------------------------------------
+Intent: airport_info
+Entities Extracted:
+  (No entities extracted)
+
+[STEP 2] GRAPH RETRIEVAL
+----------------------------------------------------------------------------------------------------
+Cypher Query Results: 0 journeys
+Embedding Search Results: 5 journeys
+Total Context Length: 3153 characters
+
+[STEP 3] PROMPT SENT TO LLM
+----------------------------------------------------------------------------------------------------
+Prompt Length: 3153 characters
+Model: openai
+
+FULL PROMPT:
+================================================================================
+PERSONA:
+================================================================================
+You are an airline company insights assistant. Your role is to analyze
+flight performance data and passenger satisfaction metrics to help the airline
+improve service quality. You provide factual, data-driven insights based on
+actual flight records and passenger feedback.
+
+================================================================================
+CONTEXT (Knowledge Graph Data):
+================================================================================
+KNOWLEDGE GRAPH DATA (Intent: airport_info):
+================================================================================
+
+1. EXACT MATCHES: No exact matches found.
+
+2. SEMANTIC MATCHES from AI similarity search (5 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_438
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: -42 minutes
+  Distance: 462 miles
+  Number of Legs: 2
+  Similarity Score: 0.708
+
+Result 2:
+  Journey ID: F_504
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: -12 minutes
+  Distance: 349 miles
+  Number of Legs: 2
+  Similarity Score: 0.706
+
+Result 3:
+  Journey ID: F_2192
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: -22 minutes
+  Distance: 472 miles
+  Number of Legs: 2
+  Similarity Score: 0.706
+
+Result 4:
+  Journey ID: F_2485
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: -6 minutes
+  Distance: 416 miles
+  Number of Legs: 1
+  Similarity Score: 0.706
+
+Result 5:
+  Journey ID: F_1094
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: -10 minutes
+  Distance: 404 miles
+  Number of Legs: 1
+  Similarity Score: 0.706
+
+3. SUMMARY:
+--------------------------------------------------------------------------------
+Total unique journeys found: 5
+From exact database queries: 0
+From semantic similarity: 5
+Average arrival delay: -18.4 minutes
+Average food satisfaction: 5.0/5
+================================================================================
+
+================================================================================
+TASK:
+================================================================================
+Answer the following question based ONLY on the CONTEXT provided above.
+
+IMPORTANT INSTRUCTIONS:
+1. Use ONLY the information provided in the CONTEXT section
+2. If the CONTEXT doesn't contain enough information, say: 'I don't have sufficient data to answer this question'
+3. Provide specific examples from the data (journey IDs, metrics, numbers)
+4. Be concise and factual - avoid speculation
+5. Do NOT make up or hallucinate any flight numbers, delays, or statistics
+6. If you see conflicting data, mention both sources
+
+--------------------------------------------------------------------------------
+USER QUESTION:
+Tell me about ORD airport
+--------------------------------------------------------------------------------
+
+YOUR ANSWER:
+(Provide a clear, factual answer based on the CONTEXT above)
+
+
+[STEP 4] LLM RESPONSE
+----------------------------------------------------------------------------------------------------
+Response Time: 0.71 seconds
+Response Length: 53 characters
+Success: True
+
+FULL RESPONSE:
+I don't have sufficient data to answer this question.
+
+
+====================================================================================================
+QUESTION 8/15: Information on Cairo airport
+====================================================================================================
+
+[STEP 1] PREPROCESSING
+----------------------------------------------------------------------------------------------------
+Intent: airport_info
+Entities Extracted:
+  (No entities extracted)
+
+[STEP 2] GRAPH RETRIEVAL
+----------------------------------------------------------------------------------------------------
+Cypher Query Results: 0 journeys
+Embedding Search Results: 5 journeys
+Total Context Length: 3157 characters
+
+[STEP 3] PROMPT SENT TO LLM
+----------------------------------------------------------------------------------------------------
+Prompt Length: 3157 characters
+Model: openai
+
+FULL PROMPT:
+================================================================================
+PERSONA:
+================================================================================
+You are an airline company insights assistant. Your role is to analyze
+flight performance data and passenger satisfaction metrics to help the airline
+improve service quality. You provide factual, data-driven insights based on
+actual flight records and passenger feedback.
+
+================================================================================
+CONTEXT (Knowledge Graph Data):
+================================================================================
+KNOWLEDGE GRAPH DATA (Intent: airport_info):
+================================================================================
+
+1. EXACT MATCHES: No exact matches found.
+
+2. SEMANTIC MATCHES from AI similarity search (5 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_883
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: 13 minutes
+  Distance: 1117 miles
+  Number of Legs: 1
+  Similarity Score: 0.716
+
+Result 2:
+  Journey ID: F_1332
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: -13 minutes
+  Distance: 888 miles
+  Number of Legs: 1
+  Similarity Score: 0.716
+
+Result 3:
+  Journey ID: F_2523
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: -14 minutes
+  Distance: 921 miles
+  Number of Legs: 1
+  Similarity Score: 0.715
+
+Result 4:
+  Journey ID: F_2752
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: -2 minutes
+  Distance: 1297 miles
+  Number of Legs: 1
+  Similarity Score: 0.715
+
+Result 5:
+  Journey ID: F_1720
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: -6 minutes
+  Distance: 1482 miles
+  Number of Legs: 1
+  Similarity Score: 0.715
+
+3. SUMMARY:
+--------------------------------------------------------------------------------
+Total unique journeys found: 5
+From exact database queries: 0
+From semantic similarity: 5
+Average arrival delay: -4.4 minutes
+Average food satisfaction: 5.0/5
+================================================================================
+
+================================================================================
+TASK:
+================================================================================
+Answer the following question based ONLY on the CONTEXT provided above.
+
+IMPORTANT INSTRUCTIONS:
+1. Use ONLY the information provided in the CONTEXT section
+2. If the CONTEXT doesn't contain enough information, say: 'I don't have sufficient data to answer this question'
+3. Provide specific examples from the data (journey IDs, metrics, numbers)
+4. Be concise and factual - avoid speculation
+5. Do NOT make up or hallucinate any flight numbers, delays, or statistics
+6. If you see conflicting data, mention both sources
+
+--------------------------------------------------------------------------------
+USER QUESTION:
+Information on Cairo airport
+--------------------------------------------------------------------------------
+
+YOUR ANSWER:
+(Provide a clear, factual answer based on the CONTEXT above)
+
+
+[STEP 4] LLM RESPONSE
+----------------------------------------------------------------------------------------------------
+Response Time: 0.61 seconds
+Response Length: 53 characters
+Success: True
+
+FULL RESPONSE:
+I don't have sufficient data to answer this question.
+
+
+====================================================================================================
+QUESTION 9/15: Which flights have poor passenger experience?
+====================================================================================================
+
+[STEP 1] PREPROCESSING
+----------------------------------------------------------------------------------------------------
+Intent: passenger_experience
+Entities Extracted:
+  (No entities extracted)
+
+[STEP 2] GRAPH RETRIEVAL
+----------------------------------------------------------------------------------------------------
+Cypher Query Results: 30 journeys
+Embedding Search Results: 5 journeys
+Total Context Length: 4049 characters
+
+[STEP 3] PROMPT SENT TO LLM
+----------------------------------------------------------------------------------------------------
+Prompt Length: 4049 characters
+Model: openai
+
+FULL PROMPT:
+================================================================================
+PERSONA:
+================================================================================
+You are an airline company insights assistant. Your role is to analyze
+flight performance data and passenger satisfaction metrics to help the airline
+improve service quality. You provide factual, data-driven insights based on
+actual flight records and passenger feedback.
+
+================================================================================
+CONTEXT (Knowledge Graph Data):
+================================================================================
+KNOWLEDGE GRAPH DATA (Intent: passenger_experience):
+================================================================================
+
+1. EXACT MATCHES from database query (10 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_2
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 2:
+  Journey ID: F_3
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 3:
+  Journey ID: F_4
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 4:
+  Journey ID: F_6
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 5:
+  Journey ID: F_7
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+2. SEMANTIC MATCHES from AI similarity search (5 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_1503
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: 109 minutes
+  Distance: 719 miles
+  Number of Legs: 3
+  Similarity Score: 0.819
+
+Result 2:
+  Journey ID: F_692
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: 81 minutes
+  Distance: 888 miles
+  Number of Legs: 3
+  Similarity Score: 0.818
+
+Result 3:
+  Journey ID: F_6
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: 97 minutes
+  Distance: 550 miles
+  Number of Legs: 1
+  Similarity Score: 0.818
+
+Result 4:
+  Journey ID: F_218
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: 134 minutes
+  Distance: 2562 miles
+  Number of Legs: 1
+  Similarity Score: 0.816
+
+Result 5:
+  Journey ID: F_2132
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: 95 minutes
+  Distance: 689 miles
+  Number of Legs: 2
+  Similarity Score: 0.816
+
+3. SUMMARY:
+--------------------------------------------------------------------------------
+Total unique journeys found: 14
+From exact database queries: 10
+From semantic similarity: 5
+Average arrival delay: 104.8 minutes
+Average food satisfaction: 1.0/5
+================================================================================
+
+================================================================================
+TASK:
+================================================================================
+Answer the following question based ONLY on the CONTEXT provided above.
+
+IMPORTANT INSTRUCTIONS:
+1. Use ONLY the information provided in the CONTEXT section
+2. If the CONTEXT doesn't contain enough information, say: 'I don't have sufficient data to answer this question'
+3. Provide specific examples from the data (journey IDs, metrics, numbers)
+4. Be concise and factual - avoid speculation
+5. Do NOT make up or hallucinate any flight numbers, delays, or statistics
+6. If you see conflicting data, mention both sources
+
+--------------------------------------------------------------------------------
+USER QUESTION:
+Which flights have poor passenger experience?
+--------------------------------------------------------------------------------
+
+YOUR ANSWER:
+(Provide a clear, factual answer based on the CONTEXT above)
+
+
+[STEP 4] LLM RESPONSE
+----------------------------------------------------------------------------------------------------
+Response Time: 1.32 seconds
+Response Length: 892 characters
+Success: True
+
+FULL RESPONSE:
+**Flights that show a poor passenger experience (low food satisfaction and long arrival delays):**
+
+| Journey ID | Passenger Class | Food Satisfaction | Arrival Delay |
+|------------|----------------|-------------------|---------------|
+| **F_1503** | Economy | 1 / 5 | 109 minutes |
+| **F_692**  | Economy | 1 / 5 | 81 minutes |
+| **F_6**    | Economy | 1 / 5 | 97 minutes |
+| **F_218**  | Economy | 1 / 5 | 134 minutes |
+| **F_2132** | Economy | 1 / 5 | 95 minutes |
+
+All of these journeys have the lowest possible food‑satisfaction rating (1 / 5) and experience significant arrival delays (ranging from 81 to 134 minutes). The overall average across the 14 journeys in the data set is an arrival delay of **104.8 minutes** and an average food satisfaction of **1.0 / 5**, indicating that the flights listed above are representative of the poor passenger experience observed in the dataset.
+
+
+====================================================================================================
+QUESTION 10/15: Show me flights with bad food quality
+====================================================================================================
+
+[STEP 1] PREPROCESSING
+----------------------------------------------------------------------------------------------------
+Intent: general_query
+Entities Extracted:
+  (No entities extracted)
+
+[STEP 2] GRAPH RETRIEVAL
+----------------------------------------------------------------------------------------------------
+Cypher Query Results: 25 journeys
+Embedding Search Results: 5 journeys
+Total Context Length: 3945 characters
+
+[STEP 3] PROMPT SENT TO LLM
+----------------------------------------------------------------------------------------------------
+Prompt Length: 3945 characters
+Model: openai
+
+FULL PROMPT:
+================================================================================
+PERSONA:
+================================================================================
+You are an airline company insights assistant. Your role is to analyze
+flight performance data and passenger satisfaction metrics to help the airline
+improve service quality. You provide factual, data-driven insights based on
+actual flight records and passenger feedback.
+
+================================================================================
+CONTEXT (Knowledge Graph Data):
+================================================================================
+KNOWLEDGE GRAPH DATA (Intent: general_query):
+================================================================================
+
+1. EXACT MATCHES from database query (10 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 2:
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 3:
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 4:
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 5:
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+2. SEMANTIC MATCHES from AI similarity search (5 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_409
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: 94 minutes
+  Distance: 1491 miles
+  Number of Legs: 2
+  Similarity Score: 0.778
+
+Result 2:
+  Journey ID: F_536
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: 94 minutes
+  Distance: 1491 miles
+  Number of Legs: 2
+  Similarity Score: 0.778
+
+Result 3:
+  Journey ID: F_3
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: 177 minutes
+  Distance: 1400 miles
+  Number of Legs: 2
+  Similarity Score: 0.778
+
+Result 4:
+  Journey ID: F_2574
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: 66 minutes
+  Distance: 997 miles
+  Number of Legs: 2
+  Similarity Score: 0.777
+
+Result 5:
+  Journey ID: F_1503
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: 109 minutes
+  Distance: 719 miles
+  Number of Legs: 3
+  Similarity Score: 0.777
+
+3. SUMMARY:
+--------------------------------------------------------------------------------
+Total unique journeys found: 5
+From exact database queries: 10
+From semantic similarity: 5
+Average arrival delay: 108.0 minutes
+Average food satisfaction: 1.0/5
+================================================================================
+
+================================================================================
+TASK:
+================================================================================
+Answer the following question based ONLY on the CONTEXT provided above.
+
+IMPORTANT INSTRUCTIONS:
+1. Use ONLY the information provided in the CONTEXT section
+2. If the CONTEXT doesn't contain enough information, say: 'I don't have sufficient data to answer this question'
+3. Provide specific examples from the data (journey IDs, metrics, numbers)
+4. Be concise and factual - avoid speculation
+5. Do NOT make up or hallucinate any flight numbers, delays, or statistics
+6. If you see conflicting data, mention both sources
+
+--------------------------------------------------------------------------------
+USER QUESTION:
+Show me flights with bad food quality
+--------------------------------------------------------------------------------
+
+YOUR ANSWER:
+(Provide a clear, factual answer based on the CONTEXT above)
+
+
+[STEP 4] LLM RESPONSE
+----------------------------------------------------------------------------------------------------
+Response Time: 2.37 seconds
+Response Length: 956 characters
+Success: True
+
+FULL RESPONSE:
+**Flights with low (1 / 5) food satisfaction**
+
+| Journey ID | Passenger Class | Food Satisfaction | Arrival Delay | Distance (mi) | Number of Legs |
+|------------|----------------|-------------------|---------------|---------------|----------------|
+| F_409      | Economy        | 1 / 5             | 94 min        | 1 491         | 2 |
+| F_536      | Economy        | 1 / 5             | 94 min        | 1 491         | 2 |
+| F_3        | Economy        | 1 / 5             | 177 min       | 1 400         | 2 |
+| F_2574     | Economy        | 1 / 5             | 66 min        | 997           | 2 |
+| F_1503     | Economy        | 1 / 5             | 109 min       | 719           | 3 |
+
+These five journeys are the only records in the provided context that include a specific food‑satisfaction rating, and each rates the food at **1 out of 5**, indicating poor food quality. The exact‑match entries contain no food‑satisfaction data (listed as “N/A”).
+
+
+====================================================================================================
+QUESTION 11/15: Flights with low satisfaction scores
+====================================================================================================
+
+[STEP 1] PREPROCESSING
+----------------------------------------------------------------------------------------------------
+Intent: passenger_experience
+Entities Extracted:
+  (No entities extracted)
+
+[STEP 2] GRAPH RETRIEVAL
+----------------------------------------------------------------------------------------------------
+Cypher Query Results: 30 journeys
+Embedding Search Results: 5 journeys
+Total Context Length: 4042 characters
+
+[STEP 3] PROMPT SENT TO LLM
+----------------------------------------------------------------------------------------------------
+Prompt Length: 4042 characters
+Model: openai
+
+FULL PROMPT:
+================================================================================
+PERSONA:
+================================================================================
+You are an airline company insights assistant. Your role is to analyze
+flight performance data and passenger satisfaction metrics to help the airline
+improve service quality. You provide factual, data-driven insights based on
+actual flight records and passenger feedback.
+
+================================================================================
+CONTEXT (Knowledge Graph Data):
+================================================================================
+KNOWLEDGE GRAPH DATA (Intent: passenger_experience):
+================================================================================
+
+1. EXACT MATCHES from database query (10 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_2
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 2:
+  Journey ID: F_3
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 3:
+  Journey ID: F_4
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 4:
+  Journey ID: F_6
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 5:
+  Journey ID: F_7
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+2. SEMANTIC MATCHES from AI similarity search (5 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_1503
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: 109 minutes
+  Distance: 719 miles
+  Number of Legs: 3
+  Similarity Score: 0.797
+
+Result 2:
+  Journey ID: F_2986
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: -31 minutes
+  Distance: 3878 miles
+  Number of Legs: 3
+  Similarity Score: 0.795
+
+Result 3:
+  Journey ID: F_692
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: 81 minutes
+  Distance: 888 miles
+  Number of Legs: 3
+  Similarity Score: 0.794
+
+Result 4:
+  Journey ID: F_2455
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: 104 minutes
+  Distance: 7853 miles
+  Number of Legs: 3
+  Similarity Score: 0.792
+
+Result 5:
+  Journey ID: F_6
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: 97 minutes
+  Distance: 550 miles
+  Number of Legs: 1
+  Similarity Score: 0.791
+
+3. SUMMARY:
+--------------------------------------------------------------------------------
+Total unique journeys found: 14
+From exact database queries: 10
+From semantic similarity: 5
+Average arrival delay: 65.8 minutes
+Average food satisfaction: 1.0/5
+================================================================================
+
+================================================================================
+TASK:
+================================================================================
+Answer the following question based ONLY on the CONTEXT provided above.
+
+IMPORTANT INSTRUCTIONS:
+1. Use ONLY the information provided in the CONTEXT section
+2. If the CONTEXT doesn't contain enough information, say: 'I don't have sufficient data to answer this question'
+3. Provide specific examples from the data (journey IDs, metrics, numbers)
+4. Be concise and factual - avoid speculation
+5. Do NOT make up or hallucinate any flight numbers, delays, or statistics
+6. If you see conflicting data, mention both sources
+
+--------------------------------------------------------------------------------
+USER QUESTION:
+Flights with low satisfaction scores
+--------------------------------------------------------------------------------
+
+YOUR ANSWER:
+(Provide a clear, factual answer based on the CONTEXT above)
+
+
+[STEP 4] LLM RESPONSE
+----------------------------------------------------------------------------------------------------
+Response Time: 0.38 seconds
+Response Length: 337 characters
+Success: False
+
+FULL RESPONSE:
+Error: 402 Client Error: Payment Required for url: https://router.huggingface.co/groq/openai/v1/chat/completions (Request ID: Root=1-69381b1b-6cb0d3605ae6b9432c40069b;ee0d1cd1-c042-4220-9f0c-0758bde45236)
+
+You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly included credits.
+
+
+====================================================================================================
+QUESTION 12/15: Recommend a good flight route
+====================================================================================================
+
+[STEP 1] PREPROCESSING
+----------------------------------------------------------------------------------------------------
+Intent: route_recommendation
+Entities Extracted:
+  - passenger_class: economy
+
+[STEP 2] GRAPH RETRIEVAL
+----------------------------------------------------------------------------------------------------
+Cypher Query Results: 20 journeys
+Embedding Search Results: 5 journeys
+Total Context Length: 4046 characters
+
+[STEP 3] PROMPT SENT TO LLM
+----------------------------------------------------------------------------------------------------
+Prompt Length: 4046 characters
+Model: openai
+
+FULL PROMPT:
+================================================================================
+PERSONA:
+================================================================================
+You are an airline company insights assistant. Your role is to analyze
+flight performance data and passenger satisfaction metrics to help the airline
+improve service quality. You provide factual, data-driven insights based on
+actual flight records and passenger feedback.
+
+================================================================================
+CONTEXT (Knowledge Graph Data):
+================================================================================
+KNOWLEDGE GRAPH DATA (Intent: route_recommendation):
+================================================================================
+
+1. EXACT MATCHES from database query (10 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_339
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 2:
+  Journey ID: F_1233
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 3:
+  Journey ID: F_683
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 4:
+  Journey ID: F_2968
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 5:
+  Journey ID: F_1267
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+2. SEMANTIC MATCHES from AI similarity search (5 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_664
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: -11 minutes
+  Distance: 552 miles
+  Number of Legs: 3
+  Similarity Score: 0.764
+
+Result 2:
+  Journey ID: F_417
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: -13 minutes
+  Distance: 853 miles
+  Number of Legs: 3
+  Similarity Score: 0.764
+
+Result 3:
+  Journey ID: F_2769
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: -3 minutes
+  Distance: 804 miles
+  Number of Legs: 2
+  Similarity Score: 0.763
+
+Result 4:
+  Journey ID: F_1047
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: 7 minutes
+  Distance: 853 miles
+  Number of Legs: 2
+  Similarity Score: 0.762
+
+Result 5:
+  Journey ID: F_2121
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: -5 minutes
+  Distance: 649 miles
+  Number of Legs: 2
+  Similarity Score: 0.762
+
+3. SUMMARY:
+--------------------------------------------------------------------------------
+Total unique journeys found: 15
+From exact database queries: 10
+From semantic similarity: 5
+Average arrival delay: -5.0 minutes
+Average food satisfaction: 4.0/5
+================================================================================
+
+================================================================================
+TASK:
+================================================================================
+Answer the following question based ONLY on the CONTEXT provided above.
+
+IMPORTANT INSTRUCTIONS:
+1. Use ONLY the information provided in the CONTEXT section
+2. If the CONTEXT doesn't contain enough information, say: 'I don't have sufficient data to answer this question'
+3. Provide specific examples from the data (journey IDs, metrics, numbers)
+4. Be concise and factual - avoid speculation
+5. Do NOT make up or hallucinate any flight numbers, delays, or statistics
+6. If you see conflicting data, mention both sources
+
+--------------------------------------------------------------------------------
+USER QUESTION:
+Recommend a good flight route
+--------------------------------------------------------------------------------
+
+YOUR ANSWER:
+(Provide a clear, factual answer based on the CONTEXT above)
+
+
+[STEP 4] LLM RESPONSE
+----------------------------------------------------------------------------------------------------
+Response Time: 0.37 seconds
+Response Length: 337 characters
+Success: False
+
+FULL RESPONSE:
+Error: 402 Client Error: Payment Required for url: https://router.huggingface.co/groq/openai/v1/chat/completions (Request ID: Root=1-69381b1b-4a5a64ba27f39f7d160b38d9;c369f300-ffb1-4248-918a-91df45c12212)
+
+You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly included credits.
+
+
+====================================================================================================
+QUESTION 13/15: Best business class flights
+====================================================================================================
+
+[STEP 1] PREPROCESSING
+----------------------------------------------------------------------------------------------------
+Intent: general_query
+Entities Extracted:
+  - passenger_class: business
+
+[STEP 2] GRAPH RETRIEVAL
+----------------------------------------------------------------------------------------------------
+Cypher Query Results: 25 journeys
+Embedding Search Results: 5 journeys
+Total Context Length: 3941 characters
+
+[STEP 3] PROMPT SENT TO LLM
+----------------------------------------------------------------------------------------------------
+Prompt Length: 3941 characters
+Model: openai
+
+FULL PROMPT:
+================================================================================
+PERSONA:
+================================================================================
+You are an airline company insights assistant. Your role is to analyze
+flight performance data and passenger satisfaction metrics to help the airline
+improve service quality. You provide factual, data-driven insights based on
+actual flight records and passenger feedback.
+
+================================================================================
+CONTEXT (Knowledge Graph Data):
+================================================================================
+KNOWLEDGE GRAPH DATA (Intent: general_query):
+================================================================================
+
+1. EXACT MATCHES from database query (10 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 2:
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 3:
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 4:
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 5:
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+2. SEMANTIC MATCHES from AI similarity search (5 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_364
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: -50 minutes
+  Distance: 2565 miles
+  Number of Legs: 2
+  Similarity Score: 0.792
+
+Result 2:
+  Journey ID: F_91
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: -50 minutes
+  Distance: 2565 miles
+  Number of Legs: 1
+  Similarity Score: 0.792
+
+Result 3:
+  Journey ID: F_1413
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: -60 minutes
+  Distance: 4007 miles
+  Number of Legs: 1
+  Similarity Score: 0.790
+
+Result 4:
+  Journey ID: F_842
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: -46 minutes
+  Distance: 2565 miles
+  Number of Legs: 1
+  Similarity Score: 0.789
+
+Result 5:
+  Journey ID: F_1045
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: -50 minutes
+  Distance: 5659 miles
+  Number of Legs: 2
+  Similarity Score: 0.788
+
+3. SUMMARY:
+--------------------------------------------------------------------------------
+Total unique journeys found: 5
+From exact database queries: 10
+From semantic similarity: 5
+Average arrival delay: -51.2 minutes
+Average food satisfaction: 4.0/5
+================================================================================
+
+================================================================================
+TASK:
+================================================================================
+Answer the following question based ONLY on the CONTEXT provided above.
+
+IMPORTANT INSTRUCTIONS:
+1. Use ONLY the information provided in the CONTEXT section
+2. If the CONTEXT doesn't contain enough information, say: 'I don't have sufficient data to answer this question'
+3. Provide specific examples from the data (journey IDs, metrics, numbers)
+4. Be concise and factual - avoid speculation
+5. Do NOT make up or hallucinate any flight numbers, delays, or statistics
+6. If you see conflicting data, mention both sources
+
+--------------------------------------------------------------------------------
+USER QUESTION:
+Best business class flights
+--------------------------------------------------------------------------------
+
+YOUR ANSWER:
+(Provide a clear, factual answer based on the CONTEXT above)
+
+
+[STEP 4] LLM RESPONSE
+----------------------------------------------------------------------------------------------------
+Response Time: 0.39 seconds
+Response Length: 337 characters
+Success: False
+
+FULL RESPONSE:
+Error: 402 Client Error: Payment Required for url: https://router.huggingface.co/groq/openai/v1/chat/completions (Request ID: Root=1-69381b1c-21761d8272018d07527068f5;9163f6d1-5712-4d34-830c-8940b4c537f4)
+
+You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly included credits.
+
+
+====================================================================================================
+QUESTION 14/15: Business class flights from ORD with delays
+====================================================================================================
+
+[STEP 1] PREPROCESSING
+----------------------------------------------------------------------------------------------------
+Intent: delay_analysis
+Entities Extracted:
+  - passenger_class: business
+
+[STEP 2] GRAPH RETRIEVAL
+----------------------------------------------------------------------------------------------------
+Cypher Query Results: 20 journeys
+Embedding Search Results: 5 journeys
+Total Context Length: 4059 characters
+
+[STEP 3] PROMPT SENT TO LLM
+----------------------------------------------------------------------------------------------------
+Prompt Length: 4059 characters
+Model: openai
+
+FULL PROMPT:
+================================================================================
+PERSONA:
+================================================================================
+You are an airline company insights assistant. Your role is to analyze
+flight performance data and passenger satisfaction metrics to help the airline
+improve service quality. You provide factual, data-driven insights based on
+actual flight records and passenger feedback.
+
+================================================================================
+CONTEXT (Knowledge Graph Data):
+================================================================================
+KNOWLEDGE GRAPH DATA (Intent: delay_analysis):
+================================================================================
+
+1. EXACT MATCHES from database query (10 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_2605
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 2:
+  Journey ID: F_2651
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 3:
+  Journey ID: F_873
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 4:
+  Journey ID: F_1154
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 5:
+  Journey ID: F_984
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+2. SEMANTIC MATCHES from AI similarity search (5 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_2651
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: 620 minutes
+  Distance: 8440 miles
+  Number of Legs: 3
+  Similarity Score: 0.780
+
+Result 2:
+  Journey ID: F_693
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: 115 minutes
+  Distance: 717 miles
+  Number of Legs: 2
+  Similarity Score: 0.776
+
+Result 3:
+  Journey ID: F_1592
+  Passenger Class: Economy
+  Food Satisfaction: 5/5
+  Arrival Delay: 70 minutes
+  Distance: 606 miles
+  Number of Legs: 2
+  Similarity Score: 0.776
+
+Result 4:
+  Journey ID: F_260
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: 145 minutes
+  Distance: 689 miles
+  Number of Legs: 1
+  Similarity Score: 0.775
+
+Result 5:
+  Journey ID: F_1549
+  Passenger Class: Economy
+  Food Satisfaction: 4/5
+  Arrival Delay: 74 minutes
+  Distance: 1452 miles
+  Number of Legs: 2
+  Similarity Score: 0.774
+
+3. SUMMARY:
+--------------------------------------------------------------------------------
+Total unique journeys found: 14
+From exact database queries: 10
+From semantic similarity: 5
+Average arrival delay: 101.0 minutes
+Average food satisfaction: 4.2/5
+================================================================================
+
+================================================================================
+TASK:
+================================================================================
+Answer the following question based ONLY on the CONTEXT provided above.
+
+IMPORTANT INSTRUCTIONS:
+1. Use ONLY the information provided in the CONTEXT section
+2. If the CONTEXT doesn't contain enough information, say: 'I don't have sufficient data to answer this question'
+3. Provide specific examples from the data (journey IDs, metrics, numbers)
+4. Be concise and factual - avoid speculation
+5. Do NOT make up or hallucinate any flight numbers, delays, or statistics
+6. If you see conflicting data, mention both sources
+
+--------------------------------------------------------------------------------
+USER QUESTION:
+Business class flights from ORD with delays
+--------------------------------------------------------------------------------
+
+YOUR ANSWER:
+(Provide a clear, factual answer based on the CONTEXT above)
+
+
+[STEP 4] LLM RESPONSE
+----------------------------------------------------------------------------------------------------
+Response Time: 0.31 seconds
+Response Length: 337 characters
+Success: False
+
+FULL RESPONSE:
+Error: 402 Client Error: Payment Required for url: https://router.huggingface.co/groq/openai/v1/chat/completions (Request ID: Root=1-69381b1d-6cd849aa2a26d4fc3fbae030;9b63aceb-8d1f-4339-a27c-7b91dad500fc)
+
+You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly included credits.
+
+
+====================================================================================================
+QUESTION 15/15: Economy passengers on long distance routes with poor food
+====================================================================================================
+
+[STEP 1] PREPROCESSING
+----------------------------------------------------------------------------------------------------
+Intent: general_query
+Entities Extracted:
+  - passenger_class: economy
+
+[STEP 2] GRAPH RETRIEVAL
+----------------------------------------------------------------------------------------------------
+Cypher Query Results: 25 journeys
+Embedding Search Results: 5 journeys
+Total Context Length: 3968 characters
+
+[STEP 3] PROMPT SENT TO LLM
+----------------------------------------------------------------------------------------------------
+Prompt Length: 3968 characters
+Model: openai
+
+FULL PROMPT:
+================================================================================
+PERSONA:
+================================================================================
+You are an airline company insights assistant. Your role is to analyze
+flight performance data and passenger satisfaction metrics to help the airline
+improve service quality. You provide factual, data-driven insights based on
+actual flight records and passenger feedback.
+
+================================================================================
+CONTEXT (Knowledge Graph Data):
+================================================================================
+KNOWLEDGE GRAPH DATA (Intent: general_query):
+================================================================================
+
+1. EXACT MATCHES from database query (10 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 2:
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 3:
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 4:
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+Result 5:
+  Passenger Class: Unknown
+  Food Satisfaction: N/A/5
+  Arrival Delay: N/A minutes
+  Distance: N/A miles
+  Number of Legs: N/A
+
+2. SEMANTIC MATCHES from AI similarity search (5 results):
+--------------------------------------------------------------------------------
+
+Result 1:
+  Journey ID: F_447
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: 41 minutes
+  Distance: 1005 miles
+  Number of Legs: 1
+  Similarity Score: 0.800
+
+Result 2:
+  Journey ID: F_2925
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: 48 minutes
+  Distance: 1440 miles
+  Number of Legs: 1
+  Similarity Score: 0.800
+
+Result 3:
+  Journey ID: F_886
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: -20 minutes
+  Distance: 1400 miles
+  Number of Legs: 1
+  Similarity Score: 0.800
+
+Result 4:
+  Journey ID: F_1447
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: 35 minutes
+  Distance: 5368 miles
+  Number of Legs: 1
+  Similarity Score: 0.799
+
+Result 5:
+  Journey ID: F_2349
+  Passenger Class: Economy
+  Food Satisfaction: 1/5
+  Arrival Delay: 35 minutes
+  Distance: 3677 miles
+  Number of Legs: 1
+  Similarity Score: 0.798
+
+3. SUMMARY:
+--------------------------------------------------------------------------------
+Total unique journeys found: 5
+From exact database queries: 10
+From semantic similarity: 5
+Average arrival delay: 27.8 minutes
+Average food satisfaction: 1.0/5
+================================================================================
+
+================================================================================
+TASK:
+================================================================================
+Answer the following question based ONLY on the CONTEXT provided above.
+
+IMPORTANT INSTRUCTIONS:
+1. Use ONLY the information provided in the CONTEXT section
+2. If the CONTEXT doesn't contain enough information, say: 'I don't have sufficient data to answer this question'
+3. Provide specific examples from the data (journey IDs, metrics, numbers)
+4. Be concise and factual - avoid speculation
+5. Do NOT make up or hallucinate any flight numbers, delays, or statistics
+6. If you see conflicting data, mention both sources
+
+--------------------------------------------------------------------------------
+USER QUESTION:
+Economy passengers on long distance routes with poor food
+--------------------------------------------------------------------------------
+
+YOUR ANSWER:
+(Provide a clear, factual answer based on the CONTEXT above)
+
+
+[STEP 4] LLM RESPONSE
+----------------------------------------------------------------------------------------------------
+Response Time: 0.25 seconds
+Response Length: 337 characters
+Success: False
+
+FULL RESPONSE:
+Error: 402 Client Error: Payment Required for url: https://router.huggingface.co/groq/openai/v1/chat/completions (Request ID: Root=1-69381b1d-7785e7287915cc547cdf9b46;68b494b8-28f4-4b61-a8c4-4fb3a06049ac)
+
+You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly included credits.
+
+
+
+====================================================================================================
+SUMMARY STATISTICS
+====================================================================================================
+
+Total Questions: 15
+Successful: 10
+Failed: 5
+Success Rate: 66.7%
+
+Average Cypher Results: 14.0
+Average Embedding Results: 5.0
+Average Response Time: 1.82s
+Average Prompt Length: 3671 characters
+Average Response Length: 408 characters
+
+
+QUESTION-BY-QUESTION SUMMARY:
+----------------------------------------------------------------------------------------------------
+#    Cypher   Embed    Time(s)    Success    Question
+----------------------------------------------------------------------------------------------------
+1    20       5        1.71       Yes        Which flights have the longest delays?...
+2    20       5        0.78       Yes        Show me flights with delays from ORD...
+3    20       5        4.38       Yes        Flights delayed more than 1 hour...
+4    0        5        0.84       Yes        Show me flights from CAI to DXB...
+5    0        5        0.77       Yes        What flights go from JFK to FRA?...
+6    25       5        4.68       Yes        Find economy class flights...
+7    0        5        0.71       Yes        Tell me about ORD airport...
+8    0        5        0.61       Yes        Information on Cairo airport...
+9    30       5        1.32       Yes        Which flights have poor passenger experience?...
+10   25       5        2.37       Yes        Show me flights with bad food quality...
+11   30       5        0.38       No         Flights with low satisfaction scores...
+12   20       5        0.37       No         Recommend a good flight route...
+13   25       5        0.39       No         Best business class flights...
+14   20       5        0.31       No         Business class flights from ORD with delays...
+15   25       5        0.25       No         Economy passengers on long distance routes with po...
+
+====================================================================================================
+END OF REPORT
+====================================================================================================

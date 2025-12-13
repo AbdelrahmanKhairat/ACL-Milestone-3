@@ -48,7 +48,7 @@ class DetailedPipelineTester:
             neo4j_uri=cfg["URI"],
             neo4j_username=cfg["USERNAME"],
             neo4j_password=cfg["PASSWORD"],
-            hf_token="your_token",
+            hf_token="hf_token",
             default_model=model_name,
             embedding_model="mpnet"
         )
