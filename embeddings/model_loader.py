@@ -6,6 +6,10 @@ MODEL_CONFIG = {
         "hf_name": "sentence-transformers/all-MiniLM-L6-v2",
         "dim": 384,
     },
+    "mpnet": {
+        "hf_name": "sentence-transformers/all-mpnet-base-v2",
+        "dim": 768,
+    },
     "e5_base": {
         "hf_name": "intfloat/multilingual-e5-base",
         "dim": 768,

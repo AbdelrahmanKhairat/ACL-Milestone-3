@@ -79,7 +79,8 @@ class SimilaritySearcher:
         """
         Perform vector similarity search in Neo4j.
 
-        Uses cosine similarity to find the most similar Journey nodes.
+        Uses cosine similarity to find the most similar Journey nodes
+        and returns them with complete relationship context (Flight, Airports, Passenger).
 
         Args:
             query_embedding: The embedded user query
@@ -88,9 +89,9 @@ class SimilaritySearcher:
             top_k: Number of top results to return
 
         Returns:
-            List of Journey nodes with similarity scores
+            List of Journey nodes with complete context and similarity scores
         """
-        # Neo4j vector similarity search query
+        # Neo4j vector similarity search query with complete subgraph
         cypher_query = f"""
         MATCH (j:Journey)
         WHERE j.{embedding_property} IS NOT NULL
@@ -98,13 +99,29 @@ class SimilaritySearcher:
              vector.similarity.cosine(j.{embedding_property}, $query_vector) AS score
         ORDER BY score DESC
         LIMIT $top_k
+
+        // Fetch complete Journey context with relationships
+        MATCH (p:Passenger)-[:TOOK]->(j)-[:ON]->(f:Flight)
+        MATCH (f)-[:DEPARTS_FROM]->(dep:Airport)
+        MATCH (f)-[:ARRIVES_AT]->(arr:Airport)
+
         RETURN j.feedback_ID as feedback_ID,
                j.passenger_class as passenger_class,
                j.food_satisfaction_score as food_satisfaction_score,
                j.arrival_delay_minutes as arrival_delay_minutes,
                j.actual_flown_miles as actual_flown_miles,
                j.number_of_legs as number_of_legs,
-               score
+               score,
+               // Flight information
+               f.flight_number as flight_number,
+               f.fleet_type_description as fleet_type,
+               // Airport information
+               dep.station_code as departure_airport,
+               arr.station_code as arrival_airport,
+               // Passenger information
+               p.generation as generation,
+               p.loyalty_program_level as loyalty_level,
+               p.record_locator as record_locator
         """
 
         with self.driver.session() as session:
@@ -153,6 +170,7 @@ class SimilaritySearcher:
     def format_results_for_llm(self, search_response: Dict[str, Any]) -> str:
         """
         Format similarity search results into readable text for LLM context.
+        Includes complete relationship context (Flight, Airports, Passenger).
 
         Args:
             search_response: Response from search_by_query()
@@ -178,9 +196,20 @@ class SimilaritySearcher:
             miles = record.get("actual_flown_miles", 0)
             legs = record.get("number_of_legs", 1)
 
+            # New: Related entity information
+            flight_number = record.get("flight_number", "N/A")
+            fleet_type = record.get("fleet_type", "N/A")
+            dep_airport = record.get("departure_airport", "N/A")
+            arr_airport = record.get("arrival_airport", "N/A")
+            generation = record.get("generation", "N/A")
+            loyalty = record.get("loyalty_level", "N/A")
+
             formatted += f"Result {i} (similarity: {score:.3f}):\n"
             formatted += f"  - Journey ID: {feedback_id}\n"
+            formatted += f"  - Route: {dep_airport} → {arr_airport}\n"
+            formatted += f"  - Flight: {flight_number} ({fleet_type})\n"
             formatted += f"  - Class: {passenger_class}\n"
+            formatted += f"  - Passenger: {generation}, {loyalty} loyalty\n"
             formatted += f"  - Food satisfaction: {food_score}/5\n"
             formatted += f"  - Arrival delay: {delay} minutes\n"
             formatted += f"  - Distance: {miles} miles\n"
