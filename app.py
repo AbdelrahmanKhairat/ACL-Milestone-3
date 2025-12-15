@@ -243,22 +243,28 @@ def main():
         "How many journeys were taken by Gen Z?",
     ]
 
+    # Initialize session state for the selected example
+    if 'selected_example' not in st.session_state:
+        st.session_state.selected_example = "(Custom question)"
+
     selected_example = st.selectbox(
         "Or select an example:",
         options=["(Custom question)"] + example_questions,
         index=0
     )
 
+    # Determine the default value for the text area
     if selected_example != "(Custom question)":
-        question = selected_example
-        question_input = st.text_area("Your Question:", value=question, height=100, key="question_area")
+        default_question = selected_example
     else:
-        question_input = st.text_area(
-            "Your Question:",
-            placeholder="e.g., Which flights have the longest delays?",
-            height=100,
-            key="question_area"
-        )
+        default_question = ""
+
+    question_input = st.text_area(
+        "Your Question:",
+        value=default_question,
+        placeholder="e.g., Which flights have the longest delays?",
+        height=100
+    )
 
     # Submit button
     col1, col2, col3 = st.columns([1, 1, 3])
