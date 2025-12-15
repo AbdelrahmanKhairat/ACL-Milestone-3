@@ -25,7 +25,7 @@ class ResultCombiner:
         self,
         cypher_response: Dict[str, Any],
         embedding_response: Dict[str, Any],
-        max_results: int = 10
+        max_results: int = 20
     ) -> Dict[str, Any]:
         """
         Merge Cypher and embedding results into unified context.
@@ -33,7 +33,7 @@ class ResultCombiner:
         Args:
             cypher_response: Response from QueryExecutor.execute_query()
             embedding_response: Response from SimilaritySearcher.search_by_query()
-            max_results: Maximum number of results to include
+            max_results: Maximum number of results to include (default 20 matched query_executor)
 
         Returns:
             Dictionary with combined results and formatted context
@@ -50,7 +50,8 @@ class ResultCombiner:
             cypher_results,
             embedding_results,
             unique_results,
-            cypher_response.get("intent", "unknown")
+            cypher_response.get("intent", "unknown"),
+            cypher_response.get("params", {})
         )
 
         return {
@@ -122,7 +123,8 @@ class ResultCombiner:
         cypher_results: List[Dict],
         embedding_results: List[Dict],
         unique_results: List[Dict],
-        intent: str
+        intent: str,
+        params: Dict[str, Any] = None
     ) -> str:
         """
         Format combined results into natural language context for LLM.
@@ -132,21 +134,71 @@ class ResultCombiner:
             embedding_results: Embedding search results
             unique_results: Merged unique results
             intent: User's classified intent
+            params: Parameters used in the query (filters)
 
         Returns:
             Formatted context string
         """
         context_parts = []
+        params = params or {}
 
         # Header
         context_parts.append(f"KNOWLEDGE GRAPH DATA (Intent: {intent}):")
         context_parts.append("=" * 80)
 
+        # Special handling for statistical queries
+        if intent == "calculate_statistic" and cypher_results:
+            record = cypher_results[0]
+            total = record.get("total_journeys", 0)
+            avg_delay = record.get("avg_delay", 0)
+            avg_food = record.get("avg_food_score", 0)
+            avg_dist = record.get("avg_distance", 0)
+            min_delay = record.get("min_delay", 0)
+            max_delay = record.get("max_delay", 0)
+
+            context_parts.append(f"STATISTICAL ANALYSIS:")
+            
+            # Show active filters
+            active_filters = []
+            if params.get("generation"):
+                active_filters.append(f"Generation: {params['generation']}")
+            if params.get("passenger_class"):
+                active_filters.append(f"Passenger Class: {params['passenger_class']}")
+            if params.get("from_airport"):
+                active_filters.append(f"From: {params['from_airport']}")
+            if params.get("to_airport"):
+                active_filters.append(f"To: {params['to_airport']}")
+            if params.get("number_of_legs"):
+                 active_filters.append(f"Legs: {params['number_of_legs']}")
+
+            if active_filters:
+                context_parts.append(f"Filters Applied: {', '.join(active_filters)}")
+            else:
+                context_parts.append("Filters Applied: None (Global Statistics)")
+                
+            context_parts.append("-" * 80)
+            context_parts.append(f"Total Journeys: {total}")
+            context_parts.append(f"Average Delay: {avg_delay:.2f} minutes")
+            context_parts.append(f"Average Food Satisfaction: {avg_food:.2f}/5")
+            context_parts.append(f"Average Distance: {avg_dist:.2f} miles")
+            context_parts.append(f"Delay Range: {min_delay} to {max_delay} minutes")
+            context_parts.append("=" * 80)
+            
+            # Optionally add examples from embeddings if helpful
+            if embedding_results:
+                 context_parts.append(f"\nRELEVANT EXAMPLES (from AI similarity search):")
+                 context_parts.append("-" * 80)
+                 for i, result in enumerate(embedding_results[:5], 1):
+                     formatted = self._format_single_result(result, i, include_score=True)
+                     context_parts.append(formatted)
+            
+            return "\n".join(context_parts)
+
         # Section 1: Exact matches from Cypher
         if cypher_results:
             context_parts.append(f"\n1. EXACT MATCHES from database query ({len(cypher_results)} results):")
             context_parts.append("-" * 80)
-            for i, result in enumerate(cypher_results[:5], 1):  # Top 5
+            for i, result in enumerate(cypher_results, 1):  # Removed hardcoded [:5] slice
                 formatted = self._format_single_result(result, i)
                 context_parts.append(formatted)
         else:
@@ -156,7 +208,7 @@ class ResultCombiner:
         if embedding_results:
             context_parts.append(f"\n2. SEMANTIC MATCHES from AI similarity search ({len(embedding_results)} results):")
             context_parts.append("-" * 80)
-            for i, result in enumerate(embedding_results[:5], 1):  # Top 5
+            for i, result in enumerate(embedding_results, 1):  # Removed hardcoded [:5] slice
                 formatted = self._format_single_result(result, i, include_score=True)
                 context_parts.append(formatted)
         else:
@@ -192,6 +244,8 @@ class ResultCombiner:
         """
         Format a single result into readable text.
 
+        NOW UPDATED: Shows complete Journey context including Flight, Airport, and Passenger info.
+
         Args:
             result: Result dictionary
             index: Result number
@@ -202,7 +256,7 @@ class ResultCombiner:
         """
         lines = [f"\nResult {index}:"]
 
-        # Extract fields (handle nested structures)
+        # Extract ALL fields (matches query_executor.py format)
         feedback_id = result.get("feedback_ID") or self._extract_id(result)
         passenger_class = result.get("passenger_class", "Unknown")
         food_score = result.get("food_satisfaction_score", "N/A")
@@ -211,10 +265,26 @@ class ResultCombiner:
         legs = result.get("number_of_legs", "N/A")
         score = result.get("score")
 
-        # Format details
+        # Flight information
+        flight_number = result.get("flight_number", "N/A")
+        fleet_type = result.get("fleet_type", "N/A")
+
+        # Airport information
+        dep_airport = result.get("departure_airport", "N/A")
+        arr_airport = result.get("arrival_airport", "N/A")
+
+        # Passenger information
+        generation = result.get("generation", "N/A")
+        loyalty = result.get("loyalty_level", "N/A")
+        record_locator = result.get("record_locator", "N/A")
+
+        # Format details (complete context)
         if feedback_id:
             lines.append(f"  Journey ID: {feedback_id}")
+        lines.append(f"  Route: {dep_airport} → {arr_airport}")
+        lines.append(f"  Flight: {flight_number} ({fleet_type})")
         lines.append(f"  Passenger Class: {passenger_class}")
+        lines.append(f"  Passenger: {generation}, {loyalty} loyalty (Locator: {record_locator})")
         lines.append(f"  Food Satisfaction: {food_score}/5")
         lines.append(f"  Arrival Delay: {delay} minutes")
         lines.append(f"  Distance: {miles} miles")

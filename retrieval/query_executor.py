@@ -97,10 +97,11 @@ class QueryExecutor:
         """
         Maps extracted entities to the parameters expected by each Cypher query.
 
-        Different queries expect different parameters:
-        - find_flights: needs $from_airport and $to_airport
-        - airport_info: needs $station_code
-        - Others: mostly use ORDER BY and LIMIT, no parameters needed
+        ALL queries now support optional filtering based on extracted entities:
+        - from_airport, to_airport: Filter by departure/arrival airports
+        - passenger_class: Filter by passenger class (economy, business, first)
+        - generation: Filter by passenger generation
+        - limit: Dynamic limit from extracted entities (or default 20)
 
         Args:
             intent: The classified intent
@@ -109,25 +110,23 @@ class QueryExecutor:
         Returns:
             Dictionary of parameters for the Cypher query
         """
-        params = {}
+        # Build common parameters for all queries
+        params = {
+            "from_airport": entities.get("departure_airport"),
+            "to_airport": entities.get("arrival_airport"),
+            "passenger_class": entities.get("passenger_class"),
+            "generation": entities.get("generation"),
+            "number_of_legs": entities.get("number_of_legs"),
+            "limit": entities.get("limit") or 20  # Use extracted limit or default to 20
+        }
 
-        if intent == "find_flights":
-            # Query expects: $from_airport, $to_airport
-            params["from_airport"] = entities.get("departure_airport", "")
-            params["to_airport"] = entities.get("arrival_airport", "")
-
-        elif intent == "airport_info":
-            # Query expects: $station_code
+        # For airport_info intent, set station_code parameter
+        if intent == "airport_info":
             # Use departure airport if available, otherwise arrival airport
             params["station_code"] = (
                 entities.get("departure_airport") or
-                entities.get("arrival_airport") or
-                ""
+                entities.get("arrival_airport")
             )
-
-        # Most other queries (delay_analysis, passenger_experience, etc.)
-        # don't require parameters - they use ORDER BY and LIMIT
-        # If you want to add filters later, you can extend the queries and add params here
 
         return params
 
@@ -168,8 +167,8 @@ class QueryExecutor:
         """
         Formats query results into a readable text format for the LLM context.
 
-        This converts the structured data into natural language that the LLM
-        can understand and use to answer user questions.
+        NOW UPDATED: Handles the new flat property format from enhanced Cypher queries.
+        All queries now return 13 standard properties instead of Node objects.
 
         Args:
             query_response: The response from execute_query()
@@ -187,21 +186,59 @@ class QueryExecutor:
         if count == 0:
             return "No results found in the knowledge graph for this query."
 
-        # Format based on intent type
+        # Special handling for statistical queries
+        if intent == "calculate_statistic":
+            record = results[0]
+            total = record.get("total_journeys", 0)
+            avg_delay = record.get("avg_delay", 0)
+            avg_food = record.get("avg_food_score", 0)
+            avg_dist = record.get("avg_distance", 0)
+            min_delay = record.get("min_delay", 0)
+            max_delay = record.get("max_delay", 0)
+
+            return (
+                f"Statistical Analysis:\n"
+                f"Total Journeys: {total}\n"
+                f"Average Delay: {avg_delay:.2f} minutes\n"
+                f"Average Food Satisfaction: {avg_food:.2f}/5\n"
+                f"Average Distance: {avg_dist:.2f} miles\n"
+                f"Delay Range: {min_delay} to {max_delay} minutes\n"
+            )
+
         formatted = f"Found {count} result(s) for {intent}:\n\n"
 
         for i, record in enumerate(results, 1):
+            # Extract all properties (now flat, not nested in nodes)
+            feedback_id = record.get("feedback_ID", "unknown")
+            passenger_class = record.get("passenger_class", "Unknown")
+            food_score = record.get("food_satisfaction_score", "N/A")
+            delay = record.get("arrival_delay_minutes", "N/A")
+            miles = record.get("actual_flown_miles", "N/A")
+            legs = record.get("number_of_legs", "N/A")
+
+            # Flight information
+            flight_number = record.get("flight_number", "N/A")
+            fleet_type = record.get("fleet_type", "N/A")
+
+            # Airport information
+            dep_airport = record.get("departure_airport", "N/A")
+            arr_airport = record.get("arrival_airport", "N/A")
+
+            # Passenger information
+            generation = record.get("generation", "N/A")
+            loyalty = record.get("loyalty_level", "N/A")
+            record_locator = record.get("record_locator", "N/A")
+
             formatted += f"Result {i}:\n"
-
-            # Extract relevant information based on node types
-            for key, value in record.items():
-                if isinstance(value, dict):
-                    # It's a node
-                    node_type = key
-                    formatted += f"  {node_type}: {self._format_node(value)}\n"
-                else:
-                    formatted += f"  {key}: {value}\n"
-
+            formatted += f"Journey ID: {feedback_id}\n"
+            formatted += f"Passenger Class: {passenger_class}\n"
+            formatted += f"Food Satisfaction: {food_score}/5\n"
+            formatted += f"Arrival Delay: {delay} minutes\n"
+            formatted += f"Distance: {miles} miles\n"
+            formatted += f"Number of Legs: {legs}\n"
+            formatted += f"Flight: {flight_number} ({fleet_type})\n"
+            formatted += f"Route: {dep_airport} → {arr_airport}\n"
+            formatted += f"Passenger: {generation}, {loyalty} loyalty (Locator: {record_locator})\n"
             formatted += "\n"
 
         return formatted.strip()

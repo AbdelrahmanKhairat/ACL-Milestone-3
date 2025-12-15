@@ -77,7 +77,7 @@ st.markdown("""
 
 
 @st.cache_resource
-def initialize_pipeline(model_name: str, hf_token: str):
+def initialize_pipeline(model_name: str, embedding_model: str, hf_token: str):
     """Initialize the Graph-RAG pipeline with caching."""
     cfg = load_config()
 
@@ -87,7 +87,7 @@ def initialize_pipeline(model_name: str, hf_token: str):
         neo4j_password=cfg["PASSWORD"],
         hf_token=hf_token,
         default_model=model_name,
-        embedding_model="mpnet"
+        embedding_model=embedding_model
     )
     return pipeline
 
@@ -149,12 +149,19 @@ def main():
         st.divider()
 
         # Model Selection
-        st.subheader("🤖 LLM Model")
+        st.subheader("🤖 Models")
         model_choice = st.selectbox(
-            "Select Model",
+            "LLM Model",
             options=["qwen", "openai", "llama"],
             index=0,
             help="Choose which LLM to use for generating answers"
+        )
+
+        embedding_choice = st.selectbox(
+            "Embedding Model",
+            options=["mpnet", "minilm"],
+            index=0,
+            help="Choose embedding model for semantic search"
         )
 
         model_names = {
@@ -162,7 +169,7 @@ def main():
             "openai": "gpt-oss-120b (via Groq)",
             "llama": "Llama-3.1-8B-Instruct"
         }
-        st.caption(f"Using: {model_names[model_choice]}")
+        st.caption(f"Using LLM: {model_names[model_choice]}")
 
         st.divider()
 
@@ -179,9 +186,12 @@ def main():
 
         # Display Options
         st.subheader("👁️ Display Options")
-        show_context = st.checkbox("Show Retrieved Context", value=True)
+        show_metrics = st.checkbox("Show Metrics", value=True)
+        show_prompt = st.checkbox("Show LLM Prompt", value=False)
+        show_raw = st.checkbox("Show Raw Intermediate Results", value=False, help="Show raw JSON from Cypher and Embeddings")
+        show_context = st.checkbox("Show Combined Context", value=True)
         show_cypher = st.checkbox("Show Cypher Query", value=False)
-        show_metrics = st.checkbox("Show Detailed Metrics", value=True)
+        
 
         st.divider()
 
@@ -209,8 +219,9 @@ def main():
 
     # Initialize pipeline
     try:
+        # Re-initialize if embedding model changes (using key to force re-run if needed, but cache takes care of args)
         with st.spinner("Initializing Graph-RAG pipeline..."):
-            pipeline = initialize_pipeline(model_choice, hf_token)
+            pipeline = initialize_pipeline(model_choice, embedding_choice, hf_token)
         st.success("✅ Pipeline initialized successfully!")
     except Exception as e:
         st.error(f"❌ Failed to initialize pipeline: {str(e)}")
@@ -228,6 +239,8 @@ def main():
         "Show me flights with bad food quality",
         "Recommend a good flight route",
         "What are the best business class flights?",
+        "What is the average delay for Boomer passengers?",
+        "How many journeys were taken by Gen Z?",
     ]
 
     selected_example = st.selectbox(
@@ -303,6 +316,24 @@ def main():
                             st.caption("No specific entities extracted")
 
                     st.divider()
+                
+                # Raw Intermediate Results (New Feature)
+                if show_raw:
+                     st.header("🧾 Raw Intermediate Results")
+                     
+                     st.subheader("1. Cypher Query Results")
+                     if result.get("cypher_results", {}).get("results"):
+                         st.json(result["cypher_results"]["results"])
+                     else:
+                         st.info("No results from Cypher")
+                         
+                     st.subheader("2. Semantic Embedding Results")
+                     if result.get("embedding_results", {}).get("results"):
+                         st.json(result["embedding_results"]["results"])
+                     else:
+                         st.info("No results from Embeddings")
+                         
+                     st.divider()
 
                 # Retrieved Context
                 if show_context:
@@ -321,6 +352,14 @@ def main():
                     st.header("🔎 Executed Cypher Query")
                     cypher_query = result.get("cypher_results", {}).get("query", "N/A")
                     st.code(cypher_query, language="cypher")
+                    st.divider()
+                    
+                # LLM Prompt (New Feature)
+                if show_prompt:
+                    st.header("📝 LLM Prompt")
+                    prompt = result.get("prompt", "No prompt available")
+                    with st.expander("View Full Prompt", expanded=False):
+                        st.code(prompt, language="text")
                     st.divider()
 
                 # LLM Answer
