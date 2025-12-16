@@ -1,0 +1,118 @@
+# Embedding Model Comparison Report
+
+**Date:** 2025-12-16 02:52:41
+
+**Models:** minilm, mpnet
+
+**Questions:** 8
+
+
+## 1. Quantitative Metrics Summary
+
+| Model | Avg Time (s) | Avg Top Score | Avg Mean Score |
+|-------|--------------|---------------|----------------|
+| minilm | 0.883 | 0.7258 | 0.7194 |
+| mpnet | 0.745 | 0.7510 | 0.7468 |
+
+## 2. Detailed Comparison (Scores)
+
+| Q# | Question | MinILM Score | MPNet Score | Winner |
+|----|----------|--------------|-------------|--------|
+| Q1 | Which flights have the longest delays?... | 0.7277 | 0.7298 | Tie |
+| Q2 | Show me the 5 shortest journeys... | 0.7134 | 0.6894 | MinILM |
+| Q3 | Find economy class flights from JFK to L... | 0.8243 | 0.8119 | MinILM |
+| Q4 | Flights with terrible food and poor serv... | 0.7170 | 0.8182 | MPNet |
+| Q5 | What are the most comfortable flights?... | 0.7403 | 0.7210 | MinILM |
+| Q6 | Show me journeys with good food but long... | 0.6562 | 0.7402 | MPNet |
+| Q7 | Best business class routes with minimal ... | 0.6936 | 0.7598 | MPNet |
+| Q8 | Gold loyalty members on long-haul flight... | 0.7338 | 0.7381 | Tie |
+
+## 3. Qualitative Evaluation (Top Retrieved Result)
+
+
+### Q1: Which flights have the longest delays?
+
+**MinILM** (Score: 0.7277):
+> No content
+
+**MPNet** (Score: 0.7298):
+> No content
+
+---
+
+
+### Q2: Show me the 5 shortest journeys
+
+**MinILM** (Score: 0.7134):
+> No content
+
+**MPNet** (Score: 0.6894):
+> No content
+
+---
+
+
+### Q3: Find economy class flights from JFK to LAX
+
+**MinILM** (Score: 0.8243):
+> No content
+
+**MPNet** (Score: 0.8119):
+> No content
+
+---
+
+
+### Q4: Flights with terrible food and poor service
+
+**MinILM** (Score: 0.7170):
+> No content
+
+**MPNet** (Score: 0.8182):
+> No content
+
+---
+
+
+### Q5: What are the most comfortable flights?
+
+**MinILM** (Score: 0.7403):
+> No content
+
+**MPNet** (Score: 0.7210):
+> No content
+
+---
+
+
+### Q6: Show me journeys with good food but long delays
+
+**MinILM** (Score: 0.6562):
+> No content
+
+**MPNet** (Score: 0.7402):
+> No content
+
+---
+
+
+### Q7: Best business class routes with minimal delays
+
+**MinILM** (Score: 0.6936):
+> No content
+
+**MPNet** (Score: 0.7598):
+> No content
+
+---
+
+
+### Q8: Gold loyalty members on long-haul flights
+
+**MinILM** (Score: 0.7338):
+> No content
+
+**MPNet** (Score: 0.7381):
+> No content
+
+---

@@ -1,0 +1,262 @@
+# Embedding Model Comparison Report
+
+**Date:** 2025-12-16 02:53:54
+
+**Models:** minilm, mpnet
+
+**Questions:** 8
+
+
+## 1. Quantitative Metrics Summary
+
+| Model | Avg Time (s) | Avg Top Score | Avg Mean Score |
+|-------|--------------|---------------|----------------|
+| minilm | 1.341 | 0.7258 | 0.7194 |
+| mpnet | 1.447 | 0.7510 | 0.7468 |
+
+## 2. Detailed Comparison (Scores)
+
+| Q# | Question | MinILM Score | MPNet Score | Winner |
+|----|----------|--------------|-------------|--------|
+| Q1 | Which flights have the longest delays?... | 0.7277 | 0.7298 | Tie |
+| Q2 | Show me the 5 shortest journeys... | 0.7134 | 0.6894 | MinILM |
+| Q3 | Find economy class flights from JFK to L... | 0.8243 | 0.8119 | MinILM |
+| Q4 | Flights with terrible food and poor serv... | 0.7170 | 0.8182 | MPNet |
+| Q5 | What are the most comfortable flights?... | 0.7403 | 0.7210 | MinILM |
+| Q6 | Show me journeys with good food but long... | 0.6562 | 0.7402 | MPNet |
+| Q7 | Best business class routes with minimal ... | 0.6936 | 0.7598 | MPNet |
+| Q8 | Gold loyalty members on long-haul flight... | 0.7338 | 0.7381 | Tie |
+
+## 3. Qualitative Evaluation (Top Retrieved Result)
+
+
+### Q1: Which flights have the longest delays?
+
+**MinILM** (Score: 0.7277):
+> (similarity: 0.728):
+  - Journey ID: F_96
+  - Route: SIX → SFX
+  - Flight: 3 (B787-9)
+  - Class: Economy
+  - Passenger: Millennial, non-elite loyalty
+  - Food satisfaction: 2/5
+  - Arrival delay: 42 minutes
+  - Distance: 8440 miles
+  - Legs: 2
+
+**MPNet** (Score: 0.7298):
+> (similarity: 0.730):
+  - Journey ID: F_941
+  - Route: SIX → SFX
+  - Flight: 3 (B787-9)
+  - Class: Economy
+  - Passenger: Millennial, non-elite loyalty
+  - Food satisfaction: 2/5
+  - Arrival delay: 42 minutes
+  - Distance: 8440 miles
+  - Legs: 1
+
+---
+
+
+### Q2: Show me the 5 shortest journeys
+
+**MinILM** (Score: 0.7134):
+> (similarity: 0.713):
+  - Journey ID: F_96
+  - Route: SIX → SFX
+  - Flight: 3 (B787-9)
+  - Class: Economy
+  - Passenger: Millennial, non-elite loyalty
+  - Food satisfaction: 2/5
+  - Arrival delay: 42 minutes
+  - Distance: 8440 miles
+  - Legs: 2
+
+**MPNet** (Score: 0.6894):
+> (similarity: 0.689):
+  - Journey ID: F_2907
+  - Route: SIX → SFX
+  - Flight: 3 (B787-9)
+  - Class: Economy
+  - Passenger: Gen Z, non-elite loyalty
+  - Food satisfaction: 5/5
+  - Arrival delay: 21 minutes
+  - Distance: 8440 miles
+  - Legs: 1
+
+---
+
+
+### Q3: Find economy class flights from JFK to LAX
+
+**MinILM** (Score: 0.8243):
+> (similarity: 0.824):
+  - Journey ID: F_939
+  - Route: JFX → LAX
+  - Flight: 516 (B757-200)
+  - Class: Economy
+  - Passenger: Millennial, non-elite loyalty
+  - Food satisfaction: 1/5
+  - Arrival delay: -18 minutes
+  - Distance: 2475 miles
+  - Legs: 1
+
+**MPNet** (Score: 0.8119):
+> (similarity: 0.812):
+  - Journey ID: F_3000
+  - Route: JFX → LAX
+  - Flight: 518 (B757-200)
+  - Class: Economy
+  - Passenger: Boomer, non-elite loyalty
+  - Food satisfaction: 1/5
+  - Arrival delay: 2 minutes
+  - Distance: 2475 miles
+  - Legs: 1
+
+---
+
+
+### Q4: Flights with terrible food and poor service
+
+**MinILM** (Score: 0.7170):
+> (similarity: 0.717):
+  - Journey ID: F_2078
+  - Route: MSX → ORX
+  - Flight: 1541 (B737-900)
+  - Class: Economy
+  - Passenger: Gen X, non-elite loyalty
+  - Food satisfaction: 2/5
+  - Arrival delay: -23 minutes
+  - Distance: 334 miles
+  - Legs: 1
+
+**MPNet** (Score: 0.8182):
+> (similarity: 0.818):
+  - Journey ID: F_434
+  - Route: SFX → SIX
+  - Flight: 2 (B787-9)
+  - Class: Economy
+  - Passenger: Gen X, non-elite loyalty
+  - Food satisfaction: 1/5
+  - Arrival delay: 63 minutes
+  - Distance: 8440 miles
+  - Legs: 2
+
+---
+
+
+### Q5: What are the most comfortable flights?
+
+**MinILM** (Score: 0.7403):
+> (similarity: 0.740):
+  - Journey ID: F_1548
+  - Route: SEX → LAX
+  - Flight: 517 (A320-200)
+  - Class: Economy
+  - Passenger: Gen Z, non-elite loyalty
+  - Food satisfaction: 2/5
+  - Arrival delay: -4 minutes
+  - Distance: 954 miles
+  - Legs: 1
+
+**MPNet** (Score: 0.7210):
+> (similarity: 0.721):
+  - Journey ID: F_941
+  - Route: SIX → SFX
+  - Flight: 3 (B787-9)
+  - Class: Economy
+  - Passenger: Millennial, non-elite loyalty
+  - Food satisfaction: 2/5
+  - Arrival delay: 42 minutes
+  - Distance: 8440 miles
+  - Legs: 1
+
+---
+
+
+### Q6: Show me journeys with good food but long delays
+
+**MinILM** (Score: 0.6562):
+> (similarity: 0.656):
+  - Journey ID: F_1156
+  - Route: YVX → ORX
+  - Flight: 1869 (B737-900)
+  - Class: Economy
+  - Passenger: Silent, non-elite loyalty
+  - Food satisfaction: 2/5
+  - Arrival delay: -4 minutes
+  - Distance: 1764 miles
+  - Legs: 2
+
+**MPNet** (Score: 0.7402):
+> (similarity: 0.740):
+  - Journey ID: F_692
+  - Route: ORX → DEX
+  - Flight: 2225 (B777-200)
+  - Class: Economy
+  - Passenger: Boomer, non-elite loyalty
+  - Food satisfaction: 1/5
+  - Arrival delay: 81 minutes
+  - Distance: 888 miles
+  - Legs: 3
+
+---
+
+
+### Q7: Best business class routes with minimal delays
+
+**MinILM** (Score: 0.6936):
+> (similarity: 0.694):
+  - Journey ID: F_96
+  - Route: SIX → SFX
+  - Flight: 3 (B787-9)
+  - Class: Economy
+  - Passenger: Millennial, non-elite loyalty
+  - Food satisfaction: 2/5
+  - Arrival delay: 42 minutes
+  - Distance: 8440 miles
+  - Legs: 2
+
+**MPNet** (Score: 0.7598):
+> (similarity: 0.760):
+  - Journey ID: F_941
+  - Route: SIX → SFX
+  - Flight: 3 (B787-9)
+  - Class: Economy
+  - Passenger: Millennial, non-elite loyalty
+  - Food satisfaction: 2/5
+  - Arrival delay: 42 minutes
+  - Distance: 8440 miles
+  - Legs: 1
+
+---
+
+
+### Q8: Gold loyalty members on long-haul flights
+
+**MinILM** (Score: 0.7338):
+> (similarity: 0.734):
+  - Journey ID: F_2477
+  - Route: PHX → EWX
+  - Flight: 1638 (B737-800)
+  - Class: Economy
+  - Passenger: Millennial, premier silver loyalty
+  - Food satisfaction: 2/5
+  - Arrival delay: 14 minutes
+  - Distance: 2133 miles
+  - Legs: 1
+
+**MPNet** (Score: 0.7381):
+> (similarity: 0.738):
+  - Journey ID: F_1434
+  - Route: LAX → NRX
+  - Flight: 33 (B787-9)
+  - Class: Economy
+  - Passenger: Gen X, non-elite loyalty
+  - Food satisfaction: 2/5
+  - Arrival delay: -60 minutes
+  - Distance: 5451 miles
+  - Legs: 1
+
+---

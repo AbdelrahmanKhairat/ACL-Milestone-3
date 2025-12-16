@@ -1,0 +1,118 @@
+# Embedding Model Comparison Report
+
+**Date:** 2025-12-16 02:51:49
+
+**Models:** minilm, mpnet
+
+**Questions:** 8
+
+
+## 1. Quantitative Metrics Summary
+
+| Model | Avg Time (s) | Avg Top Score | Avg Mean Score |
+|-------|--------------|---------------|----------------|
+| minilm | 0.000 | 0.0000 | 0.0000 |
+| mpnet | 0.000 | 0.0000 | 0.0000 |
+
+## 2. Detailed Comparison (Scores)
+
+| Q# | Question | MinILM Score | MPNet Score | Winner |
+|----|----------|--------------|-------------|--------|
+| Q1 | Which flights have the longest delays?... | 0.0000 | 0.0000 | Tie |
+| Q2 | Show me the 5 shortest journeys... | 0.0000 | 0.0000 | Tie |
+| Q3 | Find economy class flights from JFK to L... | 0.0000 | 0.0000 | Tie |
+| Q4 | Flights with terrible food and poor serv... | 0.0000 | 0.0000 | Tie |
+| Q5 | What are the most comfortable flights?... | 0.0000 | 0.0000 | Tie |
+| Q6 | Show me journeys with good food but long... | 0.0000 | 0.0000 | Tie |
+| Q7 | Best business class routes with minimal ... | 0.0000 | 0.0000 | Tie |
+| Q8 | Gold loyalty members on long-haul flight... | 0.0000 | 0.0000 | Tie |
+
+## 3. Qualitative Evaluation (Top Retrieved Result)
+
+
+### Q1: Which flights have the longest delays?
+
+**MinILM** (Score: 0.0000):
+> ERROR: SimilaritySearcher.search_by_query() got an unexpected keyword argument 'property_name'
+
+**MPNet** (Score: 0.0000):
+> ERROR: SimilaritySearcher.search_by_query() got an unexpected keyword argument 'property_name'
+
+---
+
+
+### Q2: Show me the 5 shortest journeys
+
+**MinILM** (Score: 0.0000):
+> ERROR: SimilaritySearcher.search_by_query() got an unexpected keyword argument 'property_name'
+
+**MPNet** (Score: 0.0000):
+> ERROR: SimilaritySearcher.search_by_query() got an unexpected keyword argument 'property_name'
+
+---
+
+
+### Q3: Find economy class flights from JFK to LAX
+
+**MinILM** (Score: 0.0000):
+> ERROR: SimilaritySearcher.search_by_query() got an unexpected keyword argument 'property_name'
+
+**MPNet** (Score: 0.0000):
+> ERROR: SimilaritySearcher.search_by_query() got an unexpected keyword argument 'property_name'
+
+---
+
+
+### Q4: Flights with terrible food and poor service
+
+**MinILM** (Score: 0.0000):
+> ERROR: SimilaritySearcher.search_by_query() got an unexpected keyword argument 'property_name'
+
+**MPNet** (Score: 0.0000):
+> ERROR: SimilaritySearcher.search_by_query() got an unexpected keyword argument 'property_name'
+
+---
+
+
+### Q5: What are the most comfortable flights?
+
+**MinILM** (Score: 0.0000):
+> ERROR: SimilaritySearcher.search_by_query() got an unexpected keyword argument 'property_name'
+
+**MPNet** (Score: 0.0000):
+> ERROR: SimilaritySearcher.search_by_query() got an unexpected keyword argument 'property_name'
+
+---
+
+
+### Q6: Show me journeys with good food but long delays
+
+**MinILM** (Score: 0.0000):
+> ERROR: SimilaritySearcher.search_by_query() got an unexpected keyword argument 'property_name'
+
+**MPNet** (Score: 0.0000):
+> ERROR: SimilaritySearcher.search_by_query() got an unexpected keyword argument 'property_name'
+
+---
+
+
+### Q7: Best business class routes with minimal delays
+
+**MinILM** (Score: 0.0000):
+> ERROR: SimilaritySearcher.search_by_query() got an unexpected keyword argument 'property_name'
+
+**MPNet** (Score: 0.0000):
+> ERROR: SimilaritySearcher.search_by_query() got an unexpected keyword argument 'property_name'
+
+---
+
+
+### Q8: Gold loyalty members on long-haul flights
+
+**MinILM** (Score: 0.0000):
+> ERROR: SimilaritySearcher.search_by_query() got an unexpected keyword argument 'property_name'
+
+**MPNet** (Score: 0.0000):
+> ERROR: SimilaritySearcher.search_by_query() got an unexpected keyword argument 'property_name'
+
+---
