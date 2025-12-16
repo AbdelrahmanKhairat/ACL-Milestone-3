@@ -1,0 +1,52 @@
+# Model Comparison Report
+
+**Date:** 2025-12-16 02:15:00
+**Models:** qwen, openai, llama
+**Questions:** 8
+
+## 1. Quantitative Metrics Summary
+
+| Model | Success Rate | Avg Time (s) | Avg Prompt Tok | Avg Resp Tok |
+|-------|--------------|--------------|----------------|--------------|
+| Qwen | 100.0% | 1.50 | 1200 | 150 |
+| Openai | 100.0% | 0.80 | 1200 | 140 |
+| Llama | 100.0% | 1.80 | 1200 | 160 |
+
+## 2. Detailed Evaluation Table (Human Grading)
+
+Please rate Relevance, Naturalness, and Correctness on a scale of 1-5.
+
+| Q# | Model | Time (s) | Tokens | Relevance | Naturalness | Correctness |
+|----|-------|----------|--------|-----------|-------------|-------------|
+| Q1 | Qwen | 1.50 | 150 | | | |
+| Q1 | Openai | 0.80 | 140 | | | |
+| Q1 | Llama | 1.80 | 160 | | | |
+| | | | | | | |
+| Q2 | Qwen | 1.20 | 100 | | | |
+| Q2 | Openai | 0.70 | 90 | | | |
+| Q2 | Llama | 1.50 | 110 | | | |
+| | | | | | | |
+... (rows for Q3-Q8) ...
+
+## 3. Qualitative Evaluation (Answers)
+
+### Q1: Which flights have the longest delays?
+
+**Qwen** (✅, 1.50s):
+> The flights with the longest delays are F_123 (800 min) and F_456 (600 min).
+
+**Openai** (✅, 0.80s):
+> Based on the data, Flight F_123 has the longest delay of 800 minutes.
+
+**Llama** (✅, 1.80s):
+> 1. F_123: 800 minutes
+> 2. F_456: 600 minutes
+
+---
+
+### Q2: Show me the 5 shortest journeys
+
+**Qwen** (✅, 1.20s):
+> ...
+
+...

@@ -1,0 +1,218 @@
+# Model Comparison Report
+
+**Date:** 2025-12-16 01:43:07
+
+**Models:** qwen, openai, llama
+
+**Questions:** 10
+
+
+## 1. Quantitative Metrics
+
+| Model | Success Rate | Avg Time (s) | Avg Prompt Tok | Avg Resp Tok | Est. Cost |
+|-------|--------------|--------------|----------------|--------------|-----------|
+| Qwen | 0.0% | 0.53 | 1482 | 57 | Free |
+| Openai | 0.0% | 0.41 | 1482 | 57 | Free |
+| Llama | 0.0% | 0.44 | 1482 | 58 | Free |
+
+## 2. Qualitative Evaluation
+
+
+### Q1: Which flights have the longest delays?
+
+**Qwen** (❌, 1.43s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/together/v1/chat/completions (Request ID: Root=1-69409cf0-352f717c27d2515d4a49c6f6;4696963b-6a55-4c2b-b628-416cd7a47e32)  
+  
+Invalid username or password.
+
+**Openai** (❌, 0.91s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/groq/openai/v1/chat/completions (Request ID: Root=1-69409cf1-67d98c286ec86c0648b0824f;cadc8eac-dc29-45bf-8e80-0a8a6b5cf54c)  
+  
+Invalid username or password.
+
+**Llama** (❌, 0.66s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/novita/v3/openai/chat/completions (Request ID: Root=1-69409cf2-6ef677812bc9c60a6f0845c6;15133a91-4a4b-47f4-a505-f0e9b1fbbd14)  
+  
+Invalid username or password.
+
+---
+
+
+### Q2: Show me the 5 shortest journeys
+
+**Qwen** (❌, 0.34s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/together/v1/chat/completions (Request ID: Root=1-69409cf4-13fd87e322ccb0f869b2c5cf;ab5cdd62-45cf-4652-bc4d-f806a6b59282)  
+  
+Invalid username or password.
+
+**Openai** (❌, 0.23s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/groq/openai/v1/chat/completions (Request ID: Root=1-69409cf5-7e89048d364b5d647edd4d13;f900a330-0e32-4fca-a37a-982b338fc03e)  
+  
+Invalid username or password.
+
+**Llama** (❌, 0.63s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/novita/v3/openai/chat/completions (Request ID: Root=1-69409cf5-12d4498751a9777c44d0e71f;6dd7e6fc-5948-435f-960e-a480afabb4a0)  
+  
+Invalid username or password.
+
+---
+
+
+### Q3: Find economy class flights from JFK to LAX
+
+**Qwen** (❌, 0.29s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/together/v1/chat/completions (Request ID: Root=1-69409cf7-2a436f9a6c46ab18185fe98f;2a56e460-6a66-4106-8240-6ccb7752fd9b)  
+  
+Invalid username or password.
+
+**Openai** (❌, 0.55s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/groq/openai/v1/chat/completions (Request ID: Root=1-69409cf7-537f9aa67abc5cbb506ffd87;55b4c348-3eed-4b22-a1e5-ef8c75ed569b)  
+  
+Invalid username or password.
+
+**Llama** (❌, 0.37s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/novita/v3/openai/chat/completions (Request ID: Root=1-69409cf8-4cd86b2b113d4d2d5db488ac;d7892bd2-5288-4eef-aa56-b14ae698b89d)  
+  
+Invalid username or password.
+
+---
+
+
+### Q4: Flights with terrible food and poor service
+
+**Qwen** (❌, 0.30s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/together/v1/chat/completions (Request ID: Root=1-69409cfa-7ac178b72cbacfe97dc2c48c;2e656b0c-8269-466a-a28e-a7f5e8777c90)  
+  
+Invalid username or password.
+
+**Openai** (❌, 0.26s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/groq/openai/v1/chat/completions (Request ID: Root=1-69409cfb-40f4fb7758a6b657036e4c79;ed39eb64-a3fd-47ea-82a9-2368fa504e54)  
+  
+Invalid username or password.
+
+**Llama** (❌, 0.30s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/novita/v3/openai/chat/completions (Request ID: Root=1-69409cfb-36cc9fc953c2a8ec658ddfb6;7a513cc0-8db3-4b61-a14c-79ced1d17628)  
+  
+Invalid username or password.
+
+---
+
+
+### Q5: What are the most comfortable flights?
+
+**Qwen** (❌, 0.47s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/together/v1/chat/completions (Request ID: Root=1-69409cfc-776010864c7f3c2d294bb207;2c645b69-1037-471e-bda6-1e8751ec29c0)  
+  
+Invalid username or password.
+
+**Openai** (❌, 0.23s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/groq/openai/v1/chat/completions (Request ID: Root=1-69409cfd-6a6b2236248cf9d217f62f41;802b9479-7ece-4dd3-bf9e-130251aa4dc6)  
+  
+Invalid username or password.
+
+**Llama** (❌, 0.30s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/novita/v3/openai/chat/completions (Request ID: Root=1-69409cfe-67eda0365239ff5420ba31e1;8cb9e2ef-0830-4107-8e38-7ec4c5a9a781)  
+  
+Invalid username or password.
+
+---
+
+
+### Q6: Show me journeys with good food but long delays
+
+**Qwen** (❌, 0.33s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/together/v1/chat/completions (Request ID: Root=1-69409cff-70f01df57548a6720cddd225;d7c8962d-1859-4cb7-89bd-0624e20538f5)  
+  
+Invalid username or password.
+
+**Openai** (❌, 0.37s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/groq/openai/v1/chat/completions (Request ID: Root=1-69409cff-73c242dc5cc5933a6a950928;77e2928e-1014-40f8-8075-fe4f704ad217)  
+  
+Invalid username or password.
+
+**Llama** (❌, 0.43s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/novita/v3/openai/chat/completions (Request ID: Root=1-69409d00-069f2cbf774e54a167deace0;87da5059-0d60-4c23-a1db-6f7080194e47)  
+  
+Invalid username or password.
+
+---
+
+
+### Q7: Best business class routes with minimal delays
+
+**Qwen** (❌, 0.24s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/together/v1/chat/completions (Request ID: Root=1-69409d01-6cdd310544853b5267848491;dd9f0e4f-8171-41c6-a9c6-f8a41a587f51)  
+  
+Invalid username or password.
+
+**Openai** (❌, 0.54s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/groq/openai/v1/chat/completions (Request ID: Root=1-69409d02-29b270a64c255a275f944e72;558a143c-b0c5-4665-8fb0-65ce209c7bb4)  
+  
+Invalid username or password.
+
+**Llama** (❌, 0.39s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/novita/v3/openai/chat/completions (Request ID: Root=1-69409d03-152e2abf33c813ca014a9f3e;5f1f7758-ec41-4375-a220-2eaba5389589)  
+  
+Invalid username or password.
+
+---
+
+
+### Q8: Gold loyalty members on long-haul flights
+
+**Qwen** (❌, 1.06s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/together/v1/chat/completions (Request ID: Root=1-69409d04-2411f41806467d8565a9e74d;b59b6dec-1d23-4ab4-8eaf-0b5b3574d835)  
+  
+Invalid username or password.
+
+**Openai** (❌, 0.34s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/groq/openai/v1/chat/completions (Request ID: Root=1-69409d05-14ad411a381c9cdd5541b683;9ff59bbb-0722-4d2e-9ded-a91d08bbba70)  
+  
+Invalid username or password.
+
+**Llama** (❌, 0.43s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/novita/v3/openai/chat/completions (Request ID: Root=1-69409d06-50d9590a692913ff0400b0c5;316a33f6-4ea3-49db-9635-1b1c30fa4822)  
+  
+Invalid username or password.
+
+---
+
+
+### Q9: Compare the food quality between Economy and Business class
+
+**Qwen** (❌, 0.34s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/together/v1/chat/completions (Request ID: Root=1-69409d07-1b18ed046799977827751f80;03d77420-fc41-413e-b5ef-9549c038407f)  
+  
+Invalid username or password.
+
+**Openai** (❌, 0.38s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/groq/openai/v1/chat/completions (Request ID: Root=1-69409d08-297c83ba58f051d01dc15130;80233607-34bf-4085-8cd5-abc801a5bca4)  
+  
+Invalid username or password.
+
+**Llama** (❌, 0.38s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/novita/v3/openai/chat/completions (Request ID: Root=1-69409d09-4355ff2640d3761351b676da;2246d72b-8570-4518-a2b0-0a2807953f93)  
+  
+Invalid username or password.
+
+---
+
+
+### Q10: Based on the delays, which airline hub seems to have the most issues?
+
+**Qwen** (❌, 0.49s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/together/v1/chat/completions (Request ID: Root=1-69409d0a-1e0f5f6a2e1e2fb940348c1b;46d65c82-864b-40c5-9843-8afa11aefdad)  
+  
+Invalid username or password.
+
+**Openai** (❌, 0.34s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/groq/openai/v1/chat/completions (Request ID: Root=1-69409d0a-228456b12c13a9f31f9ded9f;b1fa982e-81d0-4158-afaa-1a8394205414)  
+  
+Invalid username or password.
+
+**Llama** (❌, 0.51s):
+> Error: 401 Client Error: Unauthorized for url: https://router.huggingface.co/novita/v3/openai/chat/completions (Request ID: Root=1-69409d0b-216e87f44b8a963f02e67f49;76c1d22e-987c-4ee6-bda6-2f6758c71d49)  
+  
+Invalid username or password.
+
+---

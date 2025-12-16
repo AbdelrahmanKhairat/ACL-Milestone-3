@@ -1,0 +1,386 @@
+# Model Comparison Report
+
+**Date:** 2025-12-16 01:47:59
+
+**Models:** qwen, openai, llama
+
+**Questions:** 10
+
+
+## 1. Quantitative Metrics
+
+| Model | Success Rate | Avg Time (s) | Avg Prompt Tok | Avg Resp Tok | Est. Cost |
+|-------|--------------|--------------|----------------|--------------|-----------|
+| Qwen | 50.0% | 1.64 | 1482 | 134 | Free |
+| Openai | 50.0% | 0.92 | 1482 | 105 | Free |
+| Llama | 40.0% | 2.04 | 1482 | 151 | Free |
+
+## 2. Qualitative Evaluation
+
+
+### Q1: Which flights have the longest delays?
+
+**Qwen** (✅, 2.93s):
+> The flights with the longest delays are:  
+  
+- Journey ID: F_2651, Route: SFX → SIX, Flight: 2 (B787-9), with an arrival delay of 620 minutes.  
+- Journey ID: F_873, Route: TLX → IAX, Flight: 74 (B787-8), with an arrival delay of 463 minutes.  
+- Journey ID: F_2605, Route: DEX → JAX, Flight: 757 (A320-200), with an arrival delay of 880 minutes.  
+  
+The flight with the longest delay is F_2605 with an 880-minute delay.
+
+**Openai** (✅, 1.44s):
+> **Flights with the longest arrival delays (based on the data provided):**  
+  
+| Rank | Journey ID | Route | Arrival Delay |  
+|------|------------|-------|---------------|  
+| 1 | **F_2605** | DEX → JAX | **880 minutes** |  
+| 2 | **F_2651** | SFX → SIX | **620 minutes** *(appears in both the exact‑match list and the semantic‑match list)* |  
+| 3 | **F_873** | TLX → IAX | **463 minutes** |  
+  
+These three journeys have the highest delay values among all 14 unique journeys in the context.
+
+**Llama** (✅, 4.72s):
+> From the exact matches (database query results), the 5 flights with the longest delays are:  
+  
+1. Journey ID: F_2605 with an arrival delay of 880 minutes (Route: DEX → JAX)  
+2. Journey ID: F_2651 with an arrival delay of 620 minutes (Route: SFX → SIX)  
+3. (Considering the second longest delay after F_2651, which is) F_873 with an arrival delay of 463 minutes (Route: TLX → IAX)  
+4. Journey ID: F_1154 with an arrival delay of 327 minutes (Route: VCX → EWX)  
+5. Journey ID: F_2943 with an arrival delay of 228 minutes (Route: MCX → IAX)   
+  
+Note that Journey ID: F_984 and F_2137, F_1121, F_1273, F_2575 also have delays, but they are shorter than 228 minutes.  
+  
+Additionally, from the semantic matches (AI similarity search results), the flights with delays are:  
+- Journey ID: F_941 with an arrival delay of 42 minutes  
+- Journey ID: F_96 with an arrival delay of 42 minutes  
+- Journey ID: F_630 with an arrival delay of 42 minutes  
+- Journey ID: F_660 with an arrival delay of 55 minutes  
+  
+These flights have significantly shorter delays compared to the flights mentioned in the database query results.
+
+---
+
+
+### Q2: Show me the 5 shortest journeys
+
+**Qwen** (✅, 2.20s):
+> Based on the provided context, the 5 shortest journeys are:  
+  
+1. Journey ID: F_1402, Route: SFX → SMX, Distance: 86 miles  
+2. Journey ID: F_1896, Route: SFX → SMX, Distance: 86 miles  
+3. Journey ID: F_314, Route: IAX → RIX, Distance: 99 miles  
+4. Journey ID: F_2907, Route: SIX → SFX, Distance: 8440 miles  
+5. Journey ID: F_1627, Route: SIX → SFX, Distance: 8440 miles  
+  
+Note that the distances of the last two journeys (Journey IDs: F_2907 and F_1627) are significantly longer compared to the others, but they are still considered "shortest" based on the context provided.
+
+**Openai** (✅, 1.75s):
+> **5 Shortest Journeys (by distance)**    
+  
+| Rank | Journey ID | Route | Distance (miles) | Arrival Delay | Food Satisfaction |  
+|------|------------|-------|------------------|---------------|--------------------|  
+| 1 | **F_2489** | MKX → ORX | **67** | 35 min (late) | 5 / 5 |  
+| 2 | **F_61** | SFX → SMX | **86** | –7 min (early) | 1 / 5 |  
+| 3 | **F_1402** | SFX → SMX | **86** | –14 min (early) | 3 / 5 |  
+| 4 | **F_1896** | SFX → SMX | **86** | –5 min (early) | 2 / 5 |  
+| 5 | **F_314** | IAX → RIX | **99** | –21 min (early) | 4 / 5 |  
+  
+These are the five journeys with the shortest recorded distances in the provided data set.
+
+**Llama** (✅, 6.02s):
+> Based on the provided context, the 5 shortest journeys are:  
+  
+1. Journey ID: F_2489 (Distance: 67 miles)  
+   Route: MKX → ORX  
+   Flight: 5316 (CRJ-700)  
+   Passenger Class: Economy  
+   Passenger: Boomer, non-elite loyalty (Locator: A7XX3E)  
+   Food Satisfaction: 5/5  
+   Arrival Delay: 35 minutes  
+  
+2. Journey ID: F_61 (Distance: 86 miles)  
+   Route: SFX → SMX  
+   Flight: 5613 (ERJ-175)  
+   Passenger Class: Economy  
+   Passenger: Silent, non-elite loyalty (Locator: KZXXGE)  
+   Food Satisfaction: 1/5  
+   Arrival Delay: -7 minutes  
+  
+3. Journey ID: F_1402 (Distance: 86 miles)  
+   Route: SFX → SMX  
+   Flight: 5639 (CRJ-700)  
+   Passenger Class: Economy  
+   Passenger: Boomer, premier gold loyalty (Locator: J3XXBN)  
+   Food Satisfaction: 3/5  
+   Arrival Delay: -14 minutes  
+  
+4. Journey ID: F_1896 (Distance: 86 miles)  
+   Route: SFX → SMX  
+   Flight: 5639 (CRJ-700)  
+   Passenger Class: Economy  
+   Passenger: Boomer, non-elite loyalty (Locator: LYXXED)  
+   Food Satisfaction: 2/5  
+   Arrival Delay: -5 minutes  
+  
+5. Journey ID: F_314 (Distance: 99 miles)  
+   Route: IAX → RIX  
+   Flight: 6067 (ERJ-175)  
+   Passenger Class: Economy  
+   Passenger: Gen X, premier gold loyalty (Locator: BHXX37)  
+   Food Satisfaction: 4/5  
+   Arrival Delay: -21 minutes
+
+---
+
+
+### Q3: Find economy class flights from JFK to LAX
+
+**Qwen** (✅, 1.21s):
+> I don't have sufficient data to answer this question. The provided journey information includes flights from JFX (which is likely JFK) to LAX, but no exact matches for flights from JFK to LAX. Specifically, the matching journeys are from JFX to LAX with the following flight numbers: 518, 516, and 515.
+
+**Openai** (✅, 0.94s):
+> I don't have sufficient data to answer this question.
+
+**Llama** (✅, 3.22s):
+> Unfortunately, I don't have sufficient data to answer this question specifically about flights from JFK to LAX. The provided CONTEXT contains flights from JFX (JFK is not mentioned) to LAX, with a different origination airport (JFX). However, I can provide some relevant information related to flights from similar airports.  
+  
+Among the results, I found two flights from JFX to LAX:  
+  
+1. Result 1: Journey ID F_3000, Route JFX → LAX, Flight 518 (B757-200)  
+2. Result 2: Journey ID F_1336, Route JFX → LAX, Flight 516 (B757-200)  
+3. Result 3: Journey ID F_939, Route JFX → LAX, Flight 516 (B757-200)  
+4. Result 5 is not a direct flight from JFX to LAX, but from SJX to LAX.  
+  
+To find flights from JFK to LAX, I would need more specific information or data about these flights.
+
+---
+
+
+### Q4: Flights with terrible food and poor service
+
+**Qwen** (✅, 4.79s):
+> Based on the provided data, several flights had very low food satisfaction scores of 1/5. Here are specific examples:  
+  
+1. **Journey ID: F_396**  
+   - Route: EWX → LAX  
+   - Flight: 680 (B737-900)  
+   - Passenger Class: Economy  
+   - Passenger: Boomer, non-elite loyalty (Locator: M1XXS6)  
+   - Food Satisfaction: 1/5  
+  
+2. **Journey ID: F_692**  
+   - Route: ORX → DEX  
+   - Flight: 2225 (B777-200)  
+   - Passenger Class: Economy  
+   - Passenger: Boomer, non-elite loyalty (Locator: LJXX2W)  
+   - Food Satisfaction: 1/5  
+   - Arrival Delay: 81 minutes  
+  
+3. **Journey ID: F_1988**  
+   - Route: SFX → CDX  
+   - Flight: 991 (B777-200)  
+   - Passenger Class: Economy  
+   - Passenger: Silent, non-elite loyalty (Locator: C3XX4G)  
+   - Food Satisfaction: 1/5  
+   - Arrival Delay: 126 minutes  
+  
+4. **Journey ID: F_2455**  
+   - Route: MEX → SFX  
+   - Flight: 62 (B787-9)  
+   - Passenger Class: Economy  
+   - Passenger: Gen X, non-elite loyalty (Locator: DHXX1T)  
+   - Food Satisfaction: 1/5  
+   - Arrival Delay: 104 minutes  
+   - Similarity Score: 0.808  
+  
+5. **Journey ID: F_941**  
+   - Route: SIX → SFX  
+   - Flight: 3 (B787-9)  
+   - Passenger Class: Economy  
+   - Passenger: Millennial, non-elite loyalty (Locator: C7XX8C)  
+   - Food Satisfaction: 2/5  
+   - Arrival Delay: 42 minutes  
+   - Similarity Score: 0.803  
+  
+These flights had poor food satisfaction, indicating issues with the food service quality.
+
+**Openai** (✅, 1.93s):
+> **Flights that show both terrible food (Food Satisfaction = 1 / 5) and signs of poor service (late arrival)**    
+  
+| Journey ID | Route | Aircraft | Food Sat. | Arrival Delay | Notes |  
+|------------|-------|----------|-----------|---------------|-------|  
+| **F_1945** | EWX → LAX | B787‑10 | 1/5 | **+13 min** | Single‑leg economy trip |  
+| **F_692**  | ORX → DEX | B777‑200 | 1/5 | **+81 min** | 3‑leg journey |  
+| **F_315**  | SFX → CDX | B777‑200 | 1/5 | **+111 min** | 2‑leg journey |  
+| **F_561**  | SFX
+
+**Llama** (✅, 4.53s):
+> Based on the provided CONTEXT, flights with "terrible food" and "poor service" seem to be those with very low food satisfaction ratings.   
+  
+In the exact matches section, we can see that 15 out of 20 journeys have a food satisfaction rating of 1/5. These journeys are:  
+  
+* F_301, F_294, F_396 (twice), F_396 (third instance), F_2448, F_188, F_2608, F_2504, F_2829, F_1876, F_56, F_2041, F_2685, F_692, F_315, F_561, F_1147, F_1988  
+  
+These flights all have a food satisfaction rating of 1/5, indicating poor food quality. However, it's essential to note that a low food satisfaction rating does not necessarily mean "poor service" as the question implies.   
+  
+There is no explicit metric for "poor service" in the provided data. However, we can infer that flights with a low food satisfaction rating might also have other issues, such as long delays or other passenger complaints.   
+  
+To get a better understanding of flights with poor service, we would need additional data or metrics.
+
+---
+
+
+### Q5: What are the most comfortable flights?
+
+**Qwen** (✅, 3.33s):
+> Based on the provided context, the most comfortable flights are those with the highest food satisfaction ratings. Two flights stand out in this regard:  
+  
+1. **Journey ID: F_32**  
+   - Route: DEX → LAX  
+   - Flight: 441 (B737-800)  
+   - Passenger: Boomer, non-elite loyalty  
+   - Food Satisfaction: 2/5  
+  
+2. **Journey ID: F_1176**  
+   - Route: DEX → LAX  
+   - Flight: 441 (B737-800)  
+   - Passenger: Boomer, non-elite loyalty  
+   - Food Satisfaction: 5/5  
+  
+3. **Journey ID: F_113**  
+   - Route: IAX → LAX  
+   - Flight: 797 (B737-900)  
+   - Passenger: Gen X, non-elite loyalty  
+   - Food Satisfaction: 5/5  
+  
+4. **Journey ID: F_509**  
+   - Route: IAX → LAX  
+   - Flight: 797 (B737-900)  
+   - Passenger: Gen X, premier gold loyalty  
+   - Food Satisfaction: 4/5  
+  
+5. **Journey ID: F_115**  
+   - Route: DEX → LAX  
+   - Flight: 1094 (B757-300)  
+   - Passenger: Silent, premier gold loyalty  
+   - Food Satisfaction: 2/5  
+  
+Among these, flights F_1176, F_113, and F_509 have the highest food satisfaction scores of 5/5. Therefore, these flights are considered the most comfortable based on passenger feedback.
+
+**Openai** (✅, 1.60s):
+> **Flights with the highest food‑satisfaction scores (5 / 5), which best indicate passenger comfort in the data you provided:**  
+  
+| Journey ID | Route | Aircraft (Flight #) | Passenger class & profile | Food satisfaction | Arrival delay | Distance (mi) | # Legs |  
+|------------|-------|---------------------|---------------------------|-------------------|---------------|---------------|--------|  
+| **F_1176** | DEX → LAX | B737‑800 (Flight 441) | Economy – Boomer, non‑elite loyalty (Locator BMXX1E) | **5 / 5** | +9 min (slight delay) | 862 | 2 |  
+| **F_113**  | IAX → LAX | B737‑900 (Flight 797) | Economy – Gen X, non‑elite loyalty (Locator MYXX1Y) | **5 / 5** | ‑33 min (arrived early) | 2 066 | 1 |  
+  
+These two journeys received the maximum food‑satisfaction rating in the dataset, suggesting they offered the most comfortable in‑flight experience among the records available.
+
+**Llama** (❌, 0.31s):
+> Error: 402 Client Error: Payment Required for url: https://router.huggingface.co/novita/v3/openai/chat/completions (Request ID: Root=1-69409e24-4a396f7f5ecef66915b8d071;ca98b190-0b5d-401e-940c-ab0d4ab7bb77)  
+  
+You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly included credits.
+
+---
+
+
+### Q6: Show me journeys with good food but long delays
+
+**Qwen** (❌, 0.33s):
+> Error: 402 Client Error: Payment Required for url: https://router.huggingface.co/together/v1/chat/completions (Request ID: Root=1-69409e25-3397550f0e970a7f793c3eec;cd0d6498-d2ff-4c28-b5df-73f26365d7a1)  
+  
+You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly included credits.
+
+**Openai** (❌, 0.26s):
+> Error: 402 Client Error: Payment Required for url: https://router.huggingface.co/groq/openai/v1/chat/completions (Request ID: Root=1-69409e26-07613a9d618830493641a88e;6f701db7-20f4-46c4-a68e-c1cfd174bb8d)  
+  
+You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly included credits.
+
+**Llama** (❌, 0.30s):
+> Error: 402 Client Error: Payment Required for url: https://router.huggingface.co/novita/v3/openai/chat/completions (Request ID: Root=1-69409e26-02af48b06716c95b32e8d951;1fcced9e-cba6-4584-b626-597efba63344)  
+  
+You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly included credits.
+
+---
+
+
+### Q7: Best business class routes with minimal delays
+
+**Qwen** (❌, 0.49s):
+> Error: 402 Client Error: Payment Required for url: https://router.huggingface.co/together/v1/chat/completions (Request ID: Root=1-69409e27-6ec675e30d85bec14045b012;c2c5a6d2-66bd-4041-8479-19c9737a85bf)  
+  
+You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly included credits.
+
+**Openai** (❌, 0.37s):
+> Error: 402 Client Error: Payment Required for url: https://router.huggingface.co/groq/openai/v1/chat/completions (Request ID: Root=1-69409e28-312211283d6671c40fd9eb2a;317159a1-ec9b-4928-9254-40a5bcc1c69d)  
+  
+You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly included credits.
+
+**Llama** (❌, 0.29s):
+> Error: 402 Client Error: Payment Required for url: https://router.huggingface.co/novita/v3/openai/chat/completions (Request ID: Root=1-69409e28-793488da42f64f0c6f593836;5102245d-1d5d-4ec6-b135-27077ebffae0)  
+  
+You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly included credits.
+
+---
+
+
+### Q8: Gold loyalty members on long-haul flights
+
+**Qwen** (❌, 0.38s):
+> Error: 402 Client Error: Payment Required for url: https://router.huggingface.co/together/v1/chat/completions (Request ID: Root=1-69409e29-37e982957d3396c8423bc719;b816a730-e9b5-427f-94bf-a404e655c53e)  
+  
+You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly included credits.
+
+**Openai** (❌, 0.28s):
+> Error: 402 Client Error: Payment Required for url: https://router.huggingface.co/groq/openai/v1/chat/completions (Request ID: Root=1-69409e2a-16d06be2575676756c3f3490;8ab62136-c7c6-4a1c-af8d-3b4a4f0b49e9)  
+  
+You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly included credits.
+
+**Llama** (❌, 0.36s):
+> Error: 402 Client Error: Payment Required for url: https://router.huggingface.co/novita/v3/openai/chat/completions (Request ID: Root=1-69409e2a-0b08afba7d39a6a17943a1ff;d60fef28-df2a-4195-b9e7-453c55ed1135)  
+  
+You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly included credits.
+
+---
+
+
+### Q9: Compare the food quality between Economy and Business class
+
+**Qwen** (❌, 0.39s):
+> Error: 402 Client Error: Payment Required for url: https://router.huggingface.co/together/v1/chat/completions (Request ID: Root=1-69409e2b-199b6b46739a10e43f29b2c3;498da1d0-0e98-4e56-8b21-0b22c6563798)  
+  
+You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly included credits.
+
+**Openai** (❌, 0.26s):
+> Error: 402 Client Error: Payment Required for url: https://router.huggingface.co/groq/openai/v1/chat/completions (Request ID: Root=1-69409e2c-1e7247d25163bd3801380082;36e53f0e-c6a9-42bf-8af6-a6ddd9561a2e)  
+  
+You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly included credits.
+
+**Llama** (❌, 0.31s):
+> Error: 402 Client Error: Payment Required for url: https://router.huggingface.co/novita/v3/openai/chat/completions (Request ID: Root=1-69409e2c-4de3659124be930f3518ac3a;ae29d61e-bd69-430b-a49f-892ee2321e43)  
+  
+You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly included credits.
+
+---
+
+
+### Q10: Based on the delays, which airline hub seems to have the most issues?
+
+**Qwen** (❌, 0.38s):
+> Error: 402 Client Error: Payment Required for url: https://router.huggingface.co/together/v1/chat/completions (Request ID: Root=1-69409e2d-6e4b0f854ce36c4470ead8db;efba1738-ab4d-48ff-8b74-ff29d6976aa3)  
+  
+You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly included credits.
+
+**Openai** (❌, 0.39s):
+> Error: 402 Client Error: Payment Required for url: https://router.huggingface.co/groq/openai/v1/chat/completions (Request ID: Root=1-69409e2e-2e42256e3910f1ae4946d73a;e1322fbe-bf3c-4c0c-bf9b-517177f0904d)  
+  
+You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly included credits.
+
+**Llama** (❌, 0.38s):
+> Error: 402 Client Error: Payment Required for url: https://router.huggingface.co/novita/v3/openai/chat/completions (Request ID: Root=1-69409e2f-3e4c627f1681f73a781c78b6;b066f6cd-69c5-48be-a917-cba4ebe831f9)  
+  
+You have exceeded your monthly included credits for Inference Providers. Subscribe to PRO to get 20x more monthly included credits.
+
+---

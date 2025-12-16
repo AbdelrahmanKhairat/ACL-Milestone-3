@@ -1,0 +1,158 @@
+# Model Comparison Report
+
+**Date:** 2025-12-16 01:39:55
+
+**Models:** qwen, openai, llama
+
+**Questions:** 10
+
+
+## 1. Quantitative Metrics
+
+| Model | Success Rate | Avg Time (s) | Avg Prompt Tok | Avg Resp Tok | Est. Cost |
+|-------|--------------|--------------|----------------|--------------|-----------|
+| Qwen | 0.0% | 0.00 | 0 | 0 | Free |
+| Openai | 0.0% | 0.00 | 0 | 0 | Free |
+| Llama | 0.0% | 0.00 | 0 | 0 | Free |
+
+## 2. Qualitative Evaluation
+
+
+### Q1: Which flights have the longest delays?
+
+**Qwen** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+**Openai** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+**Llama** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+---
+
+
+### Q2: Show me the 5 shortest journeys
+
+**Qwen** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+**Openai** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+**Llama** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+---
+
+
+### Q3: Find economy class flights from JFK to LAX
+
+**Qwen** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+**Openai** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+**Llama** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+---
+
+
+### Q4: Flights with terrible food and poor service
+
+**Qwen** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+**Openai** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+**Llama** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+---
+
+
+### Q5: What are the most comfortable flights?
+
+**Qwen** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+**Openai** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+**Llama** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+---
+
+
+### Q6: Show me journeys with good food but long delays
+
+**Qwen** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+**Openai** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+**Llama** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+---
+
+
+### Q7: Best business class routes with minimal delays
+
+**Qwen** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+**Openai** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+**Llama** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+---
+
+
+### Q8: Gold loyalty members on long-haul flights
+
+**Qwen** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+**Openai** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+**Llama** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+---
+
+
+### Q9: Compare the food quality between Economy and Business class
+
+**Qwen** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+**Openai** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+**Llama** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+---
+
+
+### Q10: Based on the delays, which airline hub seems to have the most issues?
+
+**Qwen** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+**Openai** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+**Llama** (❌, 0.00s):
+> ERROR: Unable to retrieve routing information
+
+---
